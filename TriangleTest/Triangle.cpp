@@ -54,12 +54,12 @@ char* Triangle::getType()
     {
         return "equilateral";
     }
-    //If any two sides are equal, its an isoceles
+    //If any two sides are equal, its an isosceles
     else if((sideLengths[0] == sideLengths[1])
     		|| (sideLengths[1] == sideLengths[2])
     		|| (sideLengths[0] == sideLengths[2]))
     {
-        return "isoceles";
+        return "isosceles";
     }
     //Otherwise, its a scalene
     else
