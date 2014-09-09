@@ -33,6 +33,7 @@ int main()
     //Create the user-specified triangle and output its type.
     cout << "Building first triangle from user input." << endl;
 	Triangle t0; //Create Triangle using empty constructor to get user input
+	cout << "=============" << endl;
 	cout << "Triangle 0 is: " << t0.getType() << endl;
 	cout << "=============" << endl;
 
