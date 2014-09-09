@@ -37,7 +37,10 @@ Triangle::Triangle()
 		sideLengths[i] = tmp; // Assign the clean tmp value to the appropriate sideLength index
 		tmp = -1; // Reset tmp to -1 for next assignment
 	}
-	cout << "User-input side lengths: " << sideLengths[0] << "," << sideLengths[1] << "," << sideLengths[2] << endl;
+	cout << "User-input side lengths: "
+		 << sideLengths[0]
+		 << "," << sideLengths[1]
+		 << "," << sideLengths[2] << endl;
 } // end Triangle()
 
 /*
