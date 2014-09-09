@@ -13,16 +13,31 @@ using namespace std;
  */
 Triangle::Triangle()
 {
-	sideLengths[0] = 0; //Initialize side1 value
-	sideLengths[1] = 0; //Initialize side2 value
-	sideLengths[2] = 0; //Initialize side3 value
+	int tmp = -1; //Temporary variable to receive user input.
+	sideLengths[0] = -1; //Initialize side1 value
+	sideLengths[1] = -1; //Initialize side2 value
+	sideLengths[2] = -1; //Initialize side3 value
 
-	cout << "Enter first side length: ";
-	cin >> sideLengths[0];
-	cout << "Enter second side length: ";
-	cin >> sideLengths[1];
-	cout << "Enter third side length: ";
-	cin >> sideLengths[2];
+	//Loop through number of sides to get values from user.
+	for(int i = 0; i < NUMSIDES; i++)
+	{
+		//While loop with tmp variable to validate user input. While tmp is -1, input is not valid.
+		while(tmp == -1)
+		{
+			cout << "Enter side " << i + 1 << " length: ";
+			cin >> tmp;
+			//If cin.fail(), the inputted value was not of the correct type for the assignment.
+			if(cin.fail())
+			{
+				tmp = -1; // Ensure tmp is still set to -1
+				cin.clear(); // Clear cin
+				cin.ignore(); // Ignore remaining entries on cin
+			}
+		}
+		sideLengths[i] = tmp; // Assign the clean tmp value to the appropriate sideLength index
+		tmp = -1; // Reset tmp to -1 for next assignment
+	}
+	cout << "User-input side lengths: " << sideLengths[0] << "," << sideLengths[1] << "," << sideLengths[2] << endl;
 } // end Triangle()
 
 /*

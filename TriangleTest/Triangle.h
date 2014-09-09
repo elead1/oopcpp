@@ -7,7 +7,8 @@
 class Triangle
 {
     private:
-        int sideLengths[3];
+		const static int NUMSIDES = 3;
+        int sideLengths[NUMSIDES];
     
     public: 
         Triangle();
