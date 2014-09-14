@@ -8,6 +8,7 @@ class Statistical
 {
 	private:
 		int gradeSum = 0; // Keeps running sum of grades entered.
+		int squareSum = 0; // Keeps running sum of grades squared for stdev.
 		int numEntries = 0; // Keeps running count of grades entered.
 
 	public:
