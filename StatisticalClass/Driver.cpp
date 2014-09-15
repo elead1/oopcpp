@@ -26,9 +26,15 @@ int main()
 		std::cin >> input;
 
 		//Avoid adding sentinel value to sample
-		if(input != SENTINEL)
+		if(std::cin && input != SENTINEL)
 		{
 			data.addValue(input);
+		}
+		//If the input was invalid, clear the error and the buffer
+		else if(!std::cin)
+		{
+			std::cin.clear();
+			std::cin.ignore();
 		}
 	}while(input != SENTINEL); // end do-while
 
