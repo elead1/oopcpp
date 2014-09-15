@@ -1,18 +1,18 @@
 /*
  * Statistical.h
  * Author: Eric Leadbetter
- * Purpose: Tracks student grades and provides statistical data on them.
+ * Purpose: Tracks student values and provides statistical data on them.
  */
 
 class Statistical
 {
 	private:
-		int gradeSum = 0; // Keeps running sum of grades entered.
-		int squareSum = 0; // Keeps running sum of grades squared for stdev.
-		int numEntries = 0; // Keeps running count of grades entered.
+		int valueSum = 0; // Keeps running sum of values entered.
+		int squareSum = 0; // Keeps running sum of values squared for stdev.
+		int numEntries = 0; // Keeps running count of values entered.
 
 	public:
 		double AVG() const;
 		double STD() const;
-		void addGrade(int grade);
+		void addValue(int value);
 }; //end class Statistical

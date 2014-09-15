@@ -7,23 +7,18 @@
 #include "Statistical.h"
 
 /*
- * addGrade( int grade )
- * Purpose: Add a grade to the stat book and increment
- * the number of grades counted.
- * Input: grade is the grade to be added to the stat book.
- * Precondition: grade must be a nonnegative number
- * Postcondition: the stat book will include the grade value,
- * subsequent stat requests will use the grade value.
+ * addValue( int value )
+ * Purpose: Add a value to the stat book and increment
+ * the number of values counted.
+ * Input: value is the value to be added to the stat book.
+ * Postcondition: the stat book will include the value,
+ * subsequent stat requests will use the value.
  */
-void Statistical::addGrade(int grade)
+void Statistical::addValue(int value)
 {
-	//Verify that the input value is nonnegative.
-	if(grade >= 0)
-	{
-		gradeSum += grade;
-		squareSum += grade * grade;
-		numEntries++; // Increment number of grades entered.
-	}
+	valueSum += value;
+	squareSum += value * value;
+	numEntries++; // Increment number of grades entered.
 } //end addGrade(grade)
 
 /*
@@ -32,7 +27,13 @@ void Statistical::addGrade(int grade)
  */
 double Statistical::AVG() const
 {
-	double doubleSum = static_cast<double>(gradeSum); // Cast gradeSum to double
+	//Ensure some values have been entered
+	if(numEntries <= 0)
+	{
+		return 0;
+	}
+
+	double doubleSum = static_cast<double>(valueSum); // Cast gradeSum to double
 	return doubleSum / numEntries;
 } //end AVG()
 
@@ -45,8 +46,14 @@ double Statistical::AVG() const
 double Statistical::STD() const
 {
 	//Cast both key values to double for arithmetic.
-	double doubleSum = static_cast<double>(gradeSum);
+	double doubleSum = static_cast<double>(valueSum);
 	double doubleSquared = static_cast<double>(squareSum);
+
+	//Ensure some sample has been entered/avoid divide by 0
+	if(numEntries - 1 <= 0)
+	{
+		return 0;
+	}
 
 	//Calculate the second term of the numerator of the formula
 	double innerTerm = doubleSum * doubleSum / numEntries;
