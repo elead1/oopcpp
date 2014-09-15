@@ -1,7 +1,8 @@
 /*
  * Statistical.cpp
  * Author: Eric Leadbetter
- * Purpose: 
+ * Purpose: Allows for the performance of statistical operations
+ * on a sample of appendable data.
  */
 #include <cmath>
 #include "Statistical.h"
