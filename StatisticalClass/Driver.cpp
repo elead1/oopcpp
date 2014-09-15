@@ -1,6 +1,8 @@
 /*
  * Driver.cpp
  * Author: Eric Leadbetter
+ * Date: September 13th, 2014
+ * Class: 605.401 Programming in C++, Hal Pierson and Doug Ferguson
  * Purpose: Receives integers from the user until
  * a sentinel (-999) is input. Then utilizes the Statistical class
  * to calculate the average and standard deviation; those values
@@ -22,7 +24,7 @@ int main()
 
 	do
 	{
-		std::cout << "Enter test grade: " << std::endl;
+		std::cout << "Enter test grade (-999 to quit): " << std::endl;
 		std::cin >> input;
 
 		//Avoid adding sentinel value to sample
