@@ -8,6 +8,7 @@ class Point
 {
 	public:
 		Point(int x, int y);
+		Point( Point p );
 		int getX( void );
 		int getY( void );
 		char getContents( void );

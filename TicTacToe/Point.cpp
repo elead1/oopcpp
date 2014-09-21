@@ -13,6 +13,13 @@ Point::Point(int x, int y)
 	contents = '\0';
 }
 
+Point::Point( Point p )
+{
+	x = p.getX();
+	y = p.getY();
+	contents = p.getContents();
+}
+
 int Point::getX( void )
 {
 	return x;
