@@ -3,7 +3,9 @@
  * Author: Eric Leadbetter
  * Purpose:
  */
-///#include <cstring>
+#ifndef GameBoard_H
+#define GameBoard_H
+#include <cstring>
 #include "Point.h"
 #include "GameState.h"
 
@@ -30,5 +32,4 @@ class GameBoard
 		int point2CellIndex(Point p);
 };
 
-
-
+#endif

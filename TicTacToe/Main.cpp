@@ -31,6 +31,11 @@
 			continue;
 		}
 		std::cout << board.getPrintableBoard() << std::endl;
+		//Make sure user player didn't make last possible move.
+		if(board.getGameStatus() != GameState::ONGOING)
+		{
+			break;
+		}
 		//makeMove() is guaranteed to make a valid move
 		Point pcMove = pc.makeMove(board.getParseableBoard());
 		board.addMove(COMPUTERPLAYER, pcMove);
@@ -53,8 +58,8 @@
 				return -1;
 		} // end switch
 	} // end while
-} // end main
-*/
+} // end main*/
+
 
 //Test Point class
 /*
@@ -69,6 +74,7 @@ int main()
 */
 
 //Test GameBoard class
+/*
 int main()
 {
 	GameBoard board;
@@ -81,5 +87,16 @@ int main()
 	board.addMove(USERPLAYER, Point(3,1));
 	std::cout << board.getPrintableBoard() << std::endl;
 	std::cout << "Game status: " << board.getGameStatus() << std::endl;
+	return 0;
+}
+*/
+
+//Test ComputerPlayer class
+
+int main()
+{
+	ComputerPlayer pc;
+	Point pcMove = pc.makeMove("X        ");
+	std::cout << "Computer move: (" << pcMove.getX() << ", " << pcMove.getY() << ")" << std::endl;
 	return 0;
 }

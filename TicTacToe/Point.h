@@ -3,6 +3,8 @@
  * Author: Eric Leadbetter
  * Purpose: 
  */
+#ifndef Point_H
+#define Point_H
 
 class Point
 {
@@ -21,3 +23,5 @@ class Point
 		int y;
 		char contents;
 };
+
+#endif

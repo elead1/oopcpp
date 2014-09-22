@@ -3,15 +3,21 @@
  * Author: Eric Leadbetter
  * Purpose: 
  */
+#ifndef ComputerPlayer_H
+#define ComputerPlayer_H
+#include <iostream>
+#include "Point.h"
 
 class ComputerPlayer
 {
 	public:
-		Point makeMove( Point* board );
+		Point makeMove( std::string board );
 	private:
-		Point findWin( Point* board );
-		Point findMove( Point* board );
+		Point findWin( std::string board );
+		Point findMove( std::string board );
+		const static int BOARDXDIM = 3;
+		const static int BOARDYDIM = 3;
 };
 
 
-
+#endif

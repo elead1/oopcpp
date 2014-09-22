@@ -15,8 +15,6 @@ GameBoard::GameBoard( char p1Symbol, char p2Symbol )
 {
 	player1Symbol = p1Symbol;
 	player2Symbol = p2Symbol;
-	//std::cout << "player1  symbol param: " << p1Symbol << "\nplayer1 symbol member: " << player1Symbol << std::endl;
-	//std::cout << "player2  symbol param: " << p2Symbol << "\nplayer2 symbol member: " << player2Symbol << std::endl;
 	for(int i = 0; i < CELLSPERROW; i++)
 	{
 		for(int j = 0; j < CELLSPERCOL; j++)
