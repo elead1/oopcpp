@@ -72,12 +72,14 @@ int main()
 int main()
 {
 	GameBoard board;
-	std::cout << "Player 1 symbol: " << board.getP1Symbol() << std::endl;
-	std::cout << "Player 2 symbol: " << board.getP2Symbol() << std::endl;
 	std::cout << board.getPrintableBoard() << std::endl;
-	std::cout << board.addMove(USERPLAYER, Point(1,1)) << std::endl;
+	board.addMove(USERPLAYER, Point(1,3));
 	std::cout << board.getPrintableBoard() << std::endl;
-	board.addMove(COMPUTERPLAYER, Point(1,2));
+	board.addMove(USERPLAYER, Point(2,2));
 	std::cout << board.getPrintableBoard() << std::endl;
+	std::cout << "Game status: " << board.getGameStatus() << std::endl;
+	board.addMove(USERPLAYER, Point(3,1));
+	std::cout << board.getPrintableBoard() << std::endl;
+	std::cout << "Game status: " << board.getGameStatus() << std::endl;
 	return 0;
 }

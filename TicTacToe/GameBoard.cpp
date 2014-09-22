@@ -40,7 +40,6 @@ char GameBoard::getP2Symbol( void ) const
 
 bool GameBoard::addMove( int player, Point p)
 {
-	std::cout << "Player 1 symbol: " << player1Symbol << std::endl;
 	int cellToPlaceIdx = point2CellIndex(p);
 	//Point cellToPlace(cells[point2CellIndex(p)]);
 	// Null character is not allowed symbol, so represents empty cell.
@@ -48,13 +47,11 @@ bool GameBoard::addMove( int player, Point p)
 	{
 		if(player == PLAYER1)
 		{
-			std::cout << "Player 1 symbol: " << player1Symbol << std::endl;
 			cells[cellToPlaceIdx].setContents(player1Symbol);
 			return true;
 		}
 		else if(player == PLAYER2)
 		{
-			std::cout << "Player 2 symbol: " << player2Symbol << std::endl;
 			cells[cellToPlaceIdx].setContents(player2Symbol);
 			return true;
 		}
@@ -71,21 +68,21 @@ bool GameBoard::addMove( int player, Point p)
 	}
 } //end addMove(int, Point)
 
-/*GameState GameBoard::getGameStatus( void )
+GameState GameBoard::getGameStatus( void )
 {
 	int cellsFilled = 0;
 
 	for(int i = 0; i < NUMCELLS; i++)
 	{
-		if(cells[i].getContents().compare("") != 0)
+		if(!cells[i].isEmpty())
 		{
-			cellsFilled++; // Contents are not null char, so cell is filled.
+			cellsFilled++; // Cell is filled.
 			//Check for winners
-			if(cells[i].getContents().compare(player1Symbol) == 0 && isWinner(player1Symbol, cells[i]))
+			if(cells[i].getContents() == player1Symbol && isWinner(player1Symbol, cells[i]))
 			{
 				return GameState::PLAYER1WIN;
 			}
-			if(cells[i].getContents().compare(player2Symbol) == 0 && isWinner(player2Symbol, cells[i]))
+			if(cells[i].getContents() == player1Symbol && isWinner(player2Symbol, cells[i]))
 			{
 				return GameState::PLAYER2WIN;
 			}
@@ -98,7 +95,7 @@ bool GameBoard::addMove( int player, Point p)
 		} // end if
 	} // end for
 	return GameState::ONGOING;
-} // end getGameStatus(void)*/
+} // end getGameStatus(void)
 
 std::string GameBoard::getParseableBoard( void )
 {
@@ -151,7 +148,7 @@ std::string GameBoard::getPrintableBoard( void )
 	return board;
 } // end getPrintableBoard(void)
 
-/*bool GameBoard::isWinner( char symbol, Point startHere )
+bool GameBoard::isWinner( char symbol, Point startHere )
 {
 	//Possible wins are:
 	// * horizontal (x-1, x, x+1)
@@ -197,7 +194,7 @@ std::string GameBoard::getPrintableBoard( void )
 	Point diagDownLeftNeighbor(startHere.getX() - 1, startHere.getY() + 1);
 	Point diagDownRightNeighbor(startHere.getX() + 1, startHere.getY() + 1);
 	Point boardUpLeftNeighbor = cells[point2CellIndex(diagUpLeftNeighbor)];
-	Point boardUpRightNeighbor = cells[point2CellIndex(diagUpLeftNeighbor)];
+	Point boardUpRightNeighbor = cells[point2CellIndex(diagUpRightNeighbor)];
 	Point boardDownLeftNeighbor = cells[point2CellIndex(diagDownLeftNeighbor)];
 	Point boardDownRightNeighbor = cells[point2CellIndex(diagDownRightNeighbor)];
 	if(point2CellIndex(startHere) == centerCellIndex)
@@ -216,7 +213,7 @@ std::string GameBoard::getPrintableBoard( void )
 
 	//No other options, no winner.
 	return false;
-}*/
+}
 
 int GameBoard::point2CellIndex(Point p)
 {
