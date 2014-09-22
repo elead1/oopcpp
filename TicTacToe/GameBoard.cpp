@@ -17,9 +17,9 @@ GameBoard::GameBoard( char p1Symbol, char p2Symbol )
 	player2Symbol = p2Symbol;
 	//std::cout << "player1  symbol param: " << p1Symbol << "\nplayer1 symbol member: " << player1Symbol << std::endl;
 	//std::cout << "player2  symbol param: " << p2Symbol << "\nplayer2 symbol member: " << player2Symbol << std::endl;
-	for(int i = 0; i <= CELLSPERROW; i++)
+	for(int i = 0; i < CELLSPERROW; i++)
 	{
-		for(int j = 0; j <= CELLSPERCOL; j++)
+		for(int j = 0; j < CELLSPERCOL; j++)
 		{
 			//Row-major indexing
 			Point tmp(i + 1, j + 1);

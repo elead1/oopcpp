@@ -77,7 +77,7 @@ int main()
 	std::cout << board.getPrintableBoard() << std::endl;
 	std::cout << board.addMove(USERPLAYER, Point(1,1)) << std::endl;
 	std::cout << board.getPrintableBoard() << std::endl;
-	/*board.addMove(COMPUTERPLAYER, Point(1,2));
-	std::cout << board.getPrintableBoard() << std::endl;*/
+	board.addMove(COMPUTERPLAYER, Point(1,2));
+	std::cout << board.getPrintableBoard() << std::endl;
 	return 0;
 }
