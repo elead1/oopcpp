@@ -4,8 +4,6 @@
  * Purpose: 
  */
 
-#include "Point.h"
-
 class ComputerPlayer
 {
 	public:

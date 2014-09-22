@@ -11,7 +11,7 @@
 #define USERPLAYER 1
 #define COMPUTERPLAYER 2
 
-int main()
+/*int main()
 {
 	GameState state = GameState::ONGOING;
 	ComputerPlayer pc;
@@ -32,7 +32,8 @@ int main()
 		}
 		std::cout << board.getPrintableBoard() << std::endl;
 		//makeMove() is guaranteed to make a valid move
-		Point pcMove = pc.makeMove(board.getBoard());
+		Point pcMove = pc.makeMove(board.getParseableBoard());
+		board.addMove(COMPUTERPLAYER, pcMove);
 		std::cout << board.getPrintableBoard() << std::endl;
 		switch(board.getGameStatus())
 		{
@@ -53,4 +54,30 @@ int main()
 		} // end switch
 	} // end while
 } // end main
+*/
 
+//Test Point class
+/*
+int main()
+{
+	Point p(1, 1);
+	std::cout << "(" << p.getX() << ", " << p.getY() << ")" << std::endl;
+	p.setContents('Q');
+	std::cout << "contents: " << p.getContents() << std::endl;
+	return 0;
+}
+*/
+
+//Test GameBoard class
+int main()
+{
+	GameBoard board;
+	std::cout << "Player 1 symbol: " << board.getP1Symbol() << std::endl;
+	std::cout << "Player 2 symbol: " << board.getP2Symbol() << std::endl;
+	std::cout << board.getPrintableBoard() << std::endl;
+	std::cout << board.addMove(USERPLAYER, Point(1,1)) << std::endl;
+	std::cout << board.getPrintableBoard() << std::endl;
+	/*board.addMove(COMPUTERPLAYER, Point(1,2));
+	std::cout << board.getPrintableBoard() << std::endl;*/
+	return 0;
+}

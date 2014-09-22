@@ -7,11 +7,14 @@
 class Point
 {
 	public:
+		Point()
+			: x(0), y(0), contents(' '){}
 		Point(int x, int y);
-		Point( Point p );
-		int getX( void );
-		int getY( void );
-		char getContents( void );
+		Point(const Point &p );
+		int getX( void ) const;
+		int getY( void ) const;
+		char getContents( void ) const;
+		bool isEmpty( void );
 		void setContents( char contents );
 	private:
 		int x;
