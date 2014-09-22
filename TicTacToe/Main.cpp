@@ -11,7 +11,29 @@
 #define USERPLAYER 1
 #define COMPUTERPLAYER 2
 
-/*int main()
+int reportGameState(GameBoard board)
+{
+	switch(board.getGameStatus())
+	{
+		case GameState::ONGOING:
+			break;
+		case GameState::TIE:
+			std::cout << "Game over! No more moves. It's a tie!" << std::endl;
+			break;
+		case GameState::PLAYER1WIN:
+			std::cout << "Game over! Player 1 wins!" << std::endl;
+			break;
+		case GameState::PLAYER2WIN:
+			std::cout << "Game over! Player 2 wins!" << std::endl;
+			break;
+		default:
+			std::cout << "Error. Invalid gamestate. Exiting." << std::endl;
+			return -1;
+	} // end switch
+	return 0;
+}
+
+int main()
 {
 	GameState state = GameState::ONGOING;
 	ComputerPlayer pc;
@@ -34,31 +56,18 @@
 		//Make sure user player didn't make last possible move.
 		if(board.getGameStatus() != GameState::ONGOING)
 		{
-			break;
+			return reportGameState(board);
 		}
 		//makeMove() is guaranteed to make a valid move
 		Point pcMove = pc.makeMove(board.getParseableBoard());
 		board.addMove(COMPUTERPLAYER, pcMove);
 		std::cout << board.getPrintableBoard() << std::endl;
-		switch(board.getGameStatus())
+		if(board.getGameStatus() != GameState::ONGOING)
 		{
-			case GameState::ONGOING:
-				break;
-			case GameState::TIE:
-				std::cout << "Game over! No more moves. It's a tie!" << std::endl;
-				break;
-			case GameState::PLAYER1WIN:
-				std::cout << "Game over! Player 1 wins!" << std::endl;
-				break;
-			case GameState::PLAYER2WIN:
-				std::cout << "Game over! Player 2 wins!" << std::endl;
-				break;
-			default:
-				std::cout << "Error. Invalid gamestate. Exiting." << std::endl;
-				return -1;
-		} // end switch
+			return reportGameState(board);
+		}
 	} // end while
-} // end main*/
+} // end main
 
 
 //Test Point class
@@ -92,7 +101,7 @@ int main()
 */
 
 //Test ComputerPlayer class
-
+/*
 int main()
 {
 	ComputerPlayer pc;
@@ -100,3 +109,4 @@ int main()
 	std::cout << "Computer move: (" << pcMove.getX() << ", " << pcMove.getY() << ")" << std::endl;
 	return 0;
 }
+*/
