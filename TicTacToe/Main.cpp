@@ -1,7 +1,9 @@
 /*
  * Main.cpp
- * Author: eric
- * Purpose: 
+ * Author: Eric Leadbetter
+ * Date: 9/19/2014
+ * Class: 605.401 Programming in C++, Hal Pierson, Doug Ferguson
+ * Purpose: Drives the tic tac toe game.
  */
 
 #include <iostream>
@@ -11,6 +13,12 @@
 #define USERPLAYER 1
 #define COMPUTERPLAYER 2
 
+/*
+ * reportGameState( GameBoard )
+ * Purpose: To print out the state of the game if the game is over.
+ * Input: board - the GameBoard with the state to evaluate.
+ * Output: 0 if in a valid state, -1 if invalid (should never occur).
+ */
 int reportGameState(GameBoard board)
 {
 	switch(board.getGameStatus())
@@ -31,37 +39,53 @@ int reportGameState(GameBoard board)
 			return -1;
 	} // end switch
 	return 0;
-}
+} //end reportGameState( GameBoard )
 
 int main()
 {
-	GameState state = GameState::ONGOING;
-	ComputerPlayer pc;
-	GameBoard board;
+	GameState state = GameState::ONGOING; //Initialize loop control
+	ComputerPlayer pc; //Create new computer player
+	GameBoard board; //Create a new game board
+	//Define input variables
 	int xMove;
 	int yMove;
 
+	//Display initial board
+	std::cout << board.getPrintableBoard() << std::endl;
+
 	while(state == GameState::ONGOING)
 	{
-		std::cout << board.getPrintableBoard() << std::endl;
+		//Get user input
 		std::cout << "Enter move as cell coordinates (top-left would be \"1 1\"): ";
 		std::cin >> xMove;
 		std::cin >> yMove;
+
+		//Create a Point to make move from user's input.
 		Point move(xMove, yMove);
+		//If move is invalid, skip rest of loop and get new input.
 		if(!board.addMove(USERPLAYER, move))
 		{
 			continue;
 		}
+
+		//Print updated board.
 		std::cout << board.getPrintableBoard() << std::endl;
+
 		//Make sure user player didn't make last possible move.
 		if(board.getGameStatus() != GameState::ONGOING)
 		{
 			return reportGameState(board);
 		}
+
 		//makeMove() is guaranteed to make a valid move
 		Point pcMove = pc.makeMove(board.getParseableBoard());
 		board.addMove(COMPUTERPLAYER, pcMove);
+
+		//Print updated board.
+		std::cout << "Computer makes a move!" << std::endl;
 		std::cout << board.getPrintableBoard() << std::endl;
+
+		//If game is over, finish up.
 		if(board.getGameStatus() != GameState::ONGOING)
 		{
 			return reportGameState(board);
