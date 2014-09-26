@@ -19,3 +19,9 @@
 *.exe
 *.out
 *.app
+
+# System files
+.gitignore
+*.project
+*.gitignore
+*.cproject
