@@ -74,48 +74,81 @@ $(document).ready(function(){initNavTree('Card_8h_source.html','');});
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifndef Card_H</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define Card_H</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Rank_8h.html">Rank.h</a>&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Suit_8h.html">Suit.h</a>&quot;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classCard.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="classCard.html">Card</a></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classCard.html#a83e971b57e8c57d963df06f76f3b144d">   26</a></span>&#160;        <a class="code" href="classCard.html#a83e971b57e8c57d963df06f76f3b144d">Card</a>( Rank r, Suit s)</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            : myRank(r), mySuit(s) {}</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        std::string <a class="code" href="classCard.html#a3ca43cfcabd3e364d28a88ef986186cd">toString</a>( <span class="keywordtype">void</span> ) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classCard.html#ad994ba2a9a81678025115c168082602c">   41</a></span>&#160;        Rank <a class="code" href="classCard.html#ad994ba2a9a81678025115c168082602c">getRank</a>( <span class="keywordtype">void</span> )<span class="keyword"> const</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">        </span>{</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordflow">return</span> myRank;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classCard.html#a11fa819f528cbd88775056eec952e836">   50</a></span>&#160;        Suit <a class="code" href="classCard.html#a11fa819f528cbd88775056eec952e836">getSuit</a>( <span class="keywordtype">void</span> )<span class="keyword"> const</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">        </span>{</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">return</span> mySuit;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        Rank myRank;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        Suit mySuit;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;};</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Rank_8h.html">Rank.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Suit_8h.html">Suit.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classCard.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="classCard.html">Card</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classCard.html#ab923a950081635e3551cc720720d3cba">   24</a></span>&#160;        <a class="code" href="classCard.html#ab923a950081635e3551cc720720d3cba">Card</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            : myRank(Rank::INVALIDRANK), mySuit(Suit::INVALIDSUIT){}</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classCard.html#a83e971b57e8c57d963df06f76f3b144d">   33</a></span>&#160;        <a class="code" href="classCard.html#a83e971b57e8c57d963df06f76f3b144d">Card</a>( Rank r, Suit s)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            : myRank(r), mySuit(s) {}</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classCard.html#aa175592679199abd63ab027f82bc811a">   39</a></span>&#160;        <a class="code" href="classCard.html#aa175592679199abd63ab027f82bc811a">Card</a>( <span class="keyword">const</span> <a class="code" href="classCard.html">Card</a> &amp;toCopy )</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            this-&gt;myRank = toCopy.<a class="code" href="classCard.html#ad994ba2a9a81678025115c168082602c">getRank</a>();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            this-&gt;mySuit = toCopy.<a class="code" href="classCard.html#a11fa819f528cbd88775056eec952e836">getSuit</a>();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        std::string <a class="code" href="classCard.html#a3ca43cfcabd3e364d28a88ef986186cd">toString</a>( <span class="keywordtype">void</span> ) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classCard.html#ad994ba2a9a81678025115c168082602c">   56</a></span>&#160;        Rank <a class="code" href="classCard.html#ad994ba2a9a81678025115c168082602c">getRank</a>( <span class="keywordtype">void</span> )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordflow">return</span> myRank;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="classCard_html_a11fa819f528cbd88775056eec952e836"><div class="ttname"><a href="classCard.html#a11fa819f528cbd88775056eec952e836">Card::getSuit</a></div><div class="ttdeci">Suit getSuit(void) const </div><div class="ttdef"><b>Definition:</b> Card.h:50</div></div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classCard.html#a11fa819f528cbd88775056eec952e836">   65</a></span>&#160;        Suit <a class="code" href="classCard.html#a11fa819f528cbd88775056eec952e836">getSuit</a>( <span class="keywordtype">void</span> )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">return</span> mySuit;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classCard.html#a24d3281314203c0f1d118a2810cec9d2">   74</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classCard.html#a24d3281314203c0f1d118a2810cec9d2">isValid</a>( <span class="keywordtype">void</span> )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">if</span>((this-&gt;myRank == Rank::INVALIDRANK)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                    || (this-&gt;mySuit == Suit::INVALIDSUIT))</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        }</div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="classCard.html#a50f09dcbafd17a046f336b437374166d">   93</a></span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classCard.html#a50f09dcbafd17a046f336b437374166d">sortByRank</a>(<span class="keyword">const</span> <a class="code" href="classCard.html">Card</a> &amp;lhs, <span class="keyword">const</span> <a class="code" href="classCard.html">Card</a> &amp;rhs)</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordflow">return</span> lhs.myRank &lt; rhs.myRank;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        }</div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="classCard.html#ace0a1fd29bb0f9ac973090f31d1ba4ab">  104</a></span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classCard.html#ace0a1fd29bb0f9ac973090f31d1ba4ab">reverseSortByRank</a>(<span class="keyword">const</span> <a class="code" href="classCard.html">Card</a> &amp;lhs, <span class="keyword">const</span> <a class="code" href="classCard.html">Card</a> &amp;rhs)</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">return</span> lhs.myRank &gt; rhs.myRank;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        Rank myRank;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        Suit mySuit;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;}; <span class="comment">// end class Card</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classCard_html_a50f09dcbafd17a046f336b437374166d"><div class="ttname"><a href="classCard.html#a50f09dcbafd17a046f336b437374166d">Card::sortByRank</a></div><div class="ttdeci">static bool sortByRank(const Card &amp;lhs, const Card &amp;rhs)</div><div class="ttdef"><b>Definition:</b> Card.h:93</div></div>
+<div class="ttc" id="classCard_html_a11fa819f528cbd88775056eec952e836"><div class="ttname"><a href="classCard.html#a11fa819f528cbd88775056eec952e836">Card::getSuit</a></div><div class="ttdeci">Suit getSuit(void) const </div><div class="ttdef"><b>Definition:</b> Card.h:65</div></div>
 <div class="ttc" id="Rank_8h_html"><div class="ttname"><a href="Rank_8h.html">Rank.h</a></div></div>
 <div class="ttc" id="Suit_8h_html"><div class="ttname"><a href="Suit_8h.html">Suit.h</a></div></div>
-<div class="ttc" id="classCard_html_a83e971b57e8c57d963df06f76f3b144d"><div class="ttname"><a href="classCard.html#a83e971b57e8c57d963df06f76f3b144d">Card::Card</a></div><div class="ttdeci">Card(Rank r, Suit s)</div><div class="ttdef"><b>Definition:</b> Card.h:26</div></div>
-<div class="ttc" id="classCard_html"><div class="ttname"><a href="classCard.html">Card</a></div><div class="ttdef"><b>Definition:</b> Card.h:16</div></div>
-<div class="ttc" id="classCard_html_a3ca43cfcabd3e364d28a88ef986186cd"><div class="ttname"><a href="classCard.html#a3ca43cfcabd3e364d28a88ef986186cd">Card::toString</a></div><div class="ttdeci">std::string toString(void) const </div></div>
-<div class="ttc" id="classCard_html_ad994ba2a9a81678025115c168082602c"><div class="ttname"><a href="classCard.html#ad994ba2a9a81678025115c168082602c">Card::getRank</a></div><div class="ttdeci">Rank getRank(void) const </div><div class="ttdef"><b>Definition:</b> Card.h:41</div></div>
+<div class="ttc" id="classCard_html_ab923a950081635e3551cc720720d3cba"><div class="ttname"><a href="classCard.html#ab923a950081635e3551cc720720d3cba">Card::Card</a></div><div class="ttdeci">Card(void)</div><div class="ttdef"><b>Definition:</b> Card.h:24</div></div>
+<div class="ttc" id="classCard_html_ace0a1fd29bb0f9ac973090f31d1ba4ab"><div class="ttname"><a href="classCard.html#ace0a1fd29bb0f9ac973090f31d1ba4ab">Card::reverseSortByRank</a></div><div class="ttdeci">static bool reverseSortByRank(const Card &amp;lhs, const Card &amp;rhs)</div><div class="ttdef"><b>Definition:</b> Card.h:104</div></div>
+<div class="ttc" id="classCard_html_a83e971b57e8c57d963df06f76f3b144d"><div class="ttname"><a href="classCard.html#a83e971b57e8c57d963df06f76f3b144d">Card::Card</a></div><div class="ttdeci">Card(Rank r, Suit s)</div><div class="ttdef"><b>Definition:</b> Card.h:33</div></div>
+<div class="ttc" id="classCard_html"><div class="ttname"><a href="classCard.html">Card</a></div><div class="ttdef"><b>Definition:</b> Card.h:17</div></div>
+<div class="ttc" id="classCard_html_a3ca43cfcabd3e364d28a88ef986186cd"><div class="ttname"><a href="classCard.html#a3ca43cfcabd3e364d28a88ef986186cd">Card::toString</a></div><div class="ttdeci">std::string toString(void) const </div><div class="ttdef"><b>Definition:</b> Card.cpp:16</div></div>
+<div class="ttc" id="classCard_html_ad994ba2a9a81678025115c168082602c"><div class="ttname"><a href="classCard.html#ad994ba2a9a81678025115c168082602c">Card::getRank</a></div><div class="ttdeci">Rank getRank(void) const </div><div class="ttdef"><b>Definition:</b> Card.h:56</div></div>
+<div class="ttc" id="classCard_html_aa175592679199abd63ab027f82bc811a"><div class="ttname"><a href="classCard.html#aa175592679199abd63ab027f82bc811a">Card::Card</a></div><div class="ttdeci">Card(const Card &amp;toCopy)</div><div class="ttdef"><b>Definition:</b> Card.h:39</div></div>
+<div class="ttc" id="classCard_html_a24d3281314203c0f1d118a2810cec9d2"><div class="ttname"><a href="classCard.html#a24d3281314203c0f1d118a2810cec9d2">Card::isValid</a></div><div class="ttdeci">bool isValid(void) const </div><div class="ttdef"><b>Definition:</b> Card.h:74</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>Card.h</b></li>
-    <li class="footer">Generated on Fri Sep 26 2014 13:54:53 for PokerHands by
+    <li class="footer">Generated on Fri Sep 26 2014 16:52:34 for PokerHands by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -9,7 +9,7 @@
 
 /** @file */
 
-enum Suit{CLUBS, DIAMONDS, HEARTS, SPADES};
+enum Suit{INVALIDSUIT, CLUBS, DIAMONDS, HEARTS, SPADES};
 
 #endif
 

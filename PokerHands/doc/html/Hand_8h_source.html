@@ -73,46 +73,65 @@ $(document).ready(function(){initNavTree('Hand_8h_source.html','');});
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifndef Hand_H</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define Hand_H</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;array&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;Card.h&quot;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classHand.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="classHand.html">Hand</a></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classHand.html#a95a448d504ac091728aed1ee66af829f">   27</a></span>&#160;        <a class="code" href="classHand.html#a95a448d504ac091728aed1ee66af829f">Hand</a>( <span class="keywordtype">void</span> )</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            : probability(0.0){}</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="classHand.html#a95a448d504ac091728aed1ee66af829f">Hand</a>( <span class="keyword">const</span> std::array&lt;Card, MAXCARDS&gt; &amp;cards );</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classHand.html#ae24ed6aeed4c7334949817b19c362e4a">addCard</a>( <span class="keyword">const</span> <a class="code" href="classCard.html">Card</a> &amp;c);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classHand.html#ac37407610e9506d1afd768e3d2c5a5a3">isFull</a>( <span class="keywordtype">void</span> ) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classHand.html#ad610787652c7e26697e189b0ed923be3">clear</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="classHand.html#ac5d138f474572569c70b79134db69b26">rank</a>( <span class="keywordtype">void</span> ) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        std::string <a class="code" href="classHand.html#a9d6ac8dfd1e4b6472f91726176e2c18c">toString</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> MAXCARDS = 5;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        std::array&lt;Card, MAXCARDS&gt; myCards = {};</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordtype">double</span> probability;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordtype">double</span> calcProbability( <span class="keywordtype">void</span> ) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;};</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="classHand_html_a9d6ac8dfd1e4b6472f91726176e2c18c"><div class="ttname"><a href="classHand.html#a9d6ac8dfd1e4b6472f91726176e2c18c">Hand::toString</a></div><div class="ttdeci">std::string toString(void)</div></div>
-<div class="ttc" id="classHand_html_ac37407610e9506d1afd768e3d2c5a5a3"><div class="ttname"><a href="classHand.html#ac37407610e9506d1afd768e3d2c5a5a3">Hand::isFull</a></div><div class="ttdeci">bool isFull(void) const </div></div>
-<div class="ttc" id="classHand_html"><div class="ttname"><a href="classHand.html">Hand</a></div><div class="ttdef"><b>Definition:</b> Hand.h:19</div></div>
-<div class="ttc" id="classHand_html_ae24ed6aeed4c7334949817b19c362e4a"><div class="ttname"><a href="classHand.html#ae24ed6aeed4c7334949817b19c362e4a">Hand::addCard</a></div><div class="ttdeci">void addCard(const Card &amp;c)</div></div>
-<div class="ttc" id="classHand_html_a95a448d504ac091728aed1ee66af829f"><div class="ttname"><a href="classHand.html#a95a448d504ac091728aed1ee66af829f">Hand::Hand</a></div><div class="ttdeci">Hand(void)</div><div class="ttdef"><b>Definition:</b> Hand.h:27</div></div>
-<div class="ttc" id="classHand_html_ac5d138f474572569c70b79134db69b26"><div class="ttname"><a href="classHand.html#ac5d138f474572569c70b79134db69b26">Hand::rank</a></div><div class="ttdeci">double rank(void) const </div></div>
-<div class="ttc" id="classCard_html"><div class="ttname"><a href="classCard.html">Card</a></div><div class="ttdef"><b>Definition:</b> Card.h:16</div></div>
-<div class="ttc" id="classHand_html_ad610787652c7e26697e189b0ed923be3"><div class="ttname"><a href="classHand.html#ad610787652c7e26697e189b0ed923be3">Hand::clear</a></div><div class="ttdeci">void clear(void)</div></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;Card.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classHand.html">   21</a></span>&#160;<span class="keyword">class </span><a class="code" href="classHand.html">Hand</a></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> MAXCARDS = 5;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">int</span> currentCards = 0; <span class="comment">//Count of current number of cards in hand</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        std::array&lt;Card, MAXCARDS&gt; myCards = {};</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordtype">double</span> probability;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordtype">double</span> calcProbability( <span class="keywordtype">void</span> ) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classHand.html#a95a448d504ac091728aed1ee66af829f">   36</a></span>&#160;        <a class="code" href="classHand.html#a95a448d504ac091728aed1ee66af829f">Hand</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            : probability(0.0) {}</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="classHand.html#a95a448d504ac091728aed1ee66af829f">Hand</a>( <span class="keyword">const</span> std::array&lt;Card, Hand::MAXCARDS&gt; &amp;cards );</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classHand.html#ae24ed6aeed4c7334949817b19c362e4a">addCard</a>( <span class="keyword">const</span> <a class="code" href="classCard.html">Card</a> &amp;c);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classHand.html#ac37407610e9506d1afd768e3d2c5a5a3">isFull</a>( <span class="keywordtype">void</span> ) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classHand.html#ad610787652c7e26697e189b0ed923be3">clear</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="classHand.html#ac5d138f474572569c70b79134db69b26">rank</a>( <span class="keywordtype">void</span> ) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="classHand.html#a255314984b9f008626bc35fc5e1a6591">   75</a></span>&#160;        <a class="code" href="classCard.html">Card</a> <a class="code" href="classHand.html#a255314984b9f008626bc35fc5e1a6591">getNthHighCard</a>( <span class="keywordtype">int</span> height )</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            std::sort(std::begin(this-&gt;myCards), std::end(this-&gt;myCards),</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                    <a class="code" href="classCard.html#ace0a1fd29bb0f9ac973090f31d1ba4ab">Card::reverseSortByRank</a>);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="comment">//std::cout &lt;&lt; &quot;height - 1: &quot; &lt;&lt; (height - 1) &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="comment">//std::cout &lt;&lt; &quot;card from getNth: &quot; &lt;&lt; this-&gt;myCards.at(height - 1).toString() &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="comment">//std::cout &lt;&lt; &quot;hand after sorting: &quot; &lt;&lt; this-&gt;toString() &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">return</span> this-&gt;myCards.at(height - 1);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        }</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="classHand.html#a3be4ecc3fc9f91ede85f190e62052945">   88</a></span>&#160;        <a class="code" href="classCard.html">Card</a> <a class="code" href="classHand.html#a3be4ecc3fc9f91ede85f190e62052945">getHighCard</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">return</span> this-&gt;<a class="code" href="classHand.html#a255314984b9f008626bc35fc5e1a6591">getNthHighCard</a>(1);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        std::string <a class="code" href="classHand.html#a9d6ac8dfd1e4b6472f91726176e2c18c">toString</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;};</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classHand_html_a9d6ac8dfd1e4b6472f91726176e2c18c"><div class="ttname"><a href="classHand.html#a9d6ac8dfd1e4b6472f91726176e2c18c">Hand::toString</a></div><div class="ttdeci">std::string toString(void)</div><div class="ttdef"><b>Definition:</b> Hand.cpp:65</div></div>
+<div class="ttc" id="classHand_html_a255314984b9f008626bc35fc5e1a6591"><div class="ttname"><a href="classHand.html#a255314984b9f008626bc35fc5e1a6591">Hand::getNthHighCard</a></div><div class="ttdeci">Card getNthHighCard(int height)</div><div class="ttdef"><b>Definition:</b> Hand.h:75</div></div>
+<div class="ttc" id="classHand_html_ac37407610e9506d1afd768e3d2c5a5a3"><div class="ttname"><a href="classHand.html#ac37407610e9506d1afd768e3d2c5a5a3">Hand::isFull</a></div><div class="ttdeci">bool isFull(void) const </div><div class="ttdef"><b>Definition:</b> Hand.cpp:42</div></div>
+<div class="ttc" id="classHand_html"><div class="ttname"><a href="classHand.html">Hand</a></div><div class="ttdef"><b>Definition:</b> Hand.h:21</div></div>
+<div class="ttc" id="classHand_html_ae24ed6aeed4c7334949817b19c362e4a"><div class="ttname"><a href="classHand.html#ae24ed6aeed4c7334949817b19c362e4a">Hand::addCard</a></div><div class="ttdeci">void addCard(const Card &amp;c)</div><div class="ttdef"><b>Definition:</b> Hand.cpp:27</div></div>
+<div class="ttc" id="classHand_html_a3be4ecc3fc9f91ede85f190e62052945"><div class="ttname"><a href="classHand.html#a3be4ecc3fc9f91ede85f190e62052945">Hand::getHighCard</a></div><div class="ttdeci">Card getHighCard(void)</div><div class="ttdef"><b>Definition:</b> Hand.h:88</div></div>
+<div class="ttc" id="classHand_html_a95a448d504ac091728aed1ee66af829f"><div class="ttname"><a href="classHand.html#a95a448d504ac091728aed1ee66af829f">Hand::Hand</a></div><div class="ttdeci">Hand(void)</div><div class="ttdef"><b>Definition:</b> Hand.h:36</div></div>
+<div class="ttc" id="classCard_html_ace0a1fd29bb0f9ac973090f31d1ba4ab"><div class="ttname"><a href="classCard.html#ace0a1fd29bb0f9ac973090f31d1ba4ab">Card::reverseSortByRank</a></div><div class="ttdeci">static bool reverseSortByRank(const Card &amp;lhs, const Card &amp;rhs)</div><div class="ttdef"><b>Definition:</b> Card.h:104</div></div>
+<div class="ttc" id="classHand_html_ac5d138f474572569c70b79134db69b26"><div class="ttname"><a href="classHand.html#ac5d138f474572569c70b79134db69b26">Hand::rank</a></div><div class="ttdeci">double rank(void) const </div><div class="ttdef"><b>Definition:</b> Hand.cpp:60</div></div>
+<div class="ttc" id="classCard_html"><div class="ttname"><a href="classCard.html">Card</a></div><div class="ttdef"><b>Definition:</b> Card.h:17</div></div>
+<div class="ttc" id="classHand_html_ad610787652c7e26697e189b0ed923be3"><div class="ttname"><a href="classHand.html#ad610787652c7e26697e189b0ed923be3">Hand::clear</a></div><div class="ttdeci">void clear(void)</div><div class="ttdef"><b>Definition:</b> Hand.cpp:51</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>Hand.h</b></li>
-    <li class="footer">Generated on Fri Sep 26 2014 13:54:53 for PokerHands by
+    <li class="footer">Generated on Fri Sep 26 2014 16:52:34 for PokerHands by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -1,7 +1,7 @@
 var Rank_8h =
 [
     [ "Rank", "Rank_8h.html#adf74d53cd68bbef55ba510b266ecbbed", [
-      [ "ACE", "Rank_8h.html#adf74d53cd68bbef55ba510b266ecbbeda7c6322d06ffff6c8d3bf3c0b3ea3210e", null ],
+      [ "INVALIDRANK", "Rank_8h.html#adf74d53cd68bbef55ba510b266ecbbedae84dd32eda927c50dacfa817c14fa46f", null ],
       [ "TWO", "Rank_8h.html#adf74d53cd68bbef55ba510b266ecbbeda0e793500a63ffa575b9b712ca3bc9851", null ],
       [ "THREE", "Rank_8h.html#adf74d53cd68bbef55ba510b266ecbbeda1251fbf93888ad32fe0ae54d49bcef17", null ],
       [ "FOUR", "Rank_8h.html#adf74d53cd68bbef55ba510b266ecbbeda23d7ef5341c6930d19b2ecbb997977cf", null ],
@@ -13,6 +13,7 @@ var Rank_8h =
       [ "TEN", "Rank_8h.html#adf74d53cd68bbef55ba510b266ecbbeda19e6aa533738c43fc96e8be6560bf1a8", null ],
       [ "JACK", "Rank_8h.html#adf74d53cd68bbef55ba510b266ecbbeda701917e3b6bc2c89c9e13f090c6627be", null ],
       [ "QUEEN", "Rank_8h.html#adf74d53cd68bbef55ba510b266ecbbeda58561257be7e2f96f82c0fdb51d7f964", null ],
-      [ "KING", "Rank_8h.html#adf74d53cd68bbef55ba510b266ecbbeda157524408d6f0fc4b7dc5e52f3dd3b80", null ]
+      [ "KING", "Rank_8h.html#adf74d53cd68bbef55ba510b266ecbbeda157524408d6f0fc4b7dc5e52f3dd3b80", null ],
+      [ "ACE", "Rank_8h.html#adf74d53cd68bbef55ba510b266ecbbeda7c6322d06ffff6c8d3bf3c0b3ea3210e", null ]
     ] ]
 ];
