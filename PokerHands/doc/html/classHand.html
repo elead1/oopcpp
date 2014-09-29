@@ -66,6 +66,7 @@ $(document).ready(function(){initNavTree('classHand.html','');});
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="classHand-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Hand Class Reference</div>  </div>
@@ -95,6 +96,11 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a3be4ecc3fc9f91ede85f190e62052945"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d6ac8dfd1e4b6472f91726176e2c18c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHand.html#a9d6ac8dfd1e4b6472f91726176e2c18c">toString</a> (void)</td></tr>
 <tr class="separator:a9d6ac8dfd1e4b6472f91726176e2c18c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a3153b41aca0486be4a2256cd412bf584"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHand.html#a3153b41aca0486be4a2256cd412bf584">handPerCardCompare</a> (<a class="el" href="classHand.html">Hand</a> &amp;lhs, <a class="el" href="classHand.html">Hand</a> &amp;rhs)</td></tr>
+<tr class="separator:a3153b41aca0486be4a2256cd412bf584"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Holds the cards making up a poker hand. Has the capability to generate the probability of being dealt the hand, useful for ranking hands. </p>
@@ -216,6 +222,49 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a3153b41aca0486be4a2256cd412bf584"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Hand::handPerCardCompare </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classHand.html">Hand</a> &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classHand.html">Hand</a> &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Sorts each <a class="el" href="classHand.html">Hand</a> descending, then does pairwise comparison of cards in each <a class="el" href="classHand.html">Hand</a>. Throws exception if lhs or rhs is not a full 5-Card <a class="el" href="classHand.html">Hand</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lhs</td><td>The 'left' <a class="el" href="classHand.html">Hand</a> to compare </td></tr>
+    <tr><td class="paramname">rhs</td><td>The 'right' <a class="el" href="classHand.html">Hand</a> to compare </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if lhs has higher cumulative Rank than rhs, -1 if rhs is higher than lhs, 0 if the Hands are equal </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ac37407610e9506d1afd768e3d2c5a5a3"></a>
 <div class="memitem">
 <div class="memproto">
@@ -278,7 +327,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classHand.html">Hand</a></li>
-    <li class="footer">Generated on Fri Sep 26 2014 16:52:34 for PokerHands by
+    <li class="footer">Generated on Sun Sep 28 2014 22:39:52 for PokerHands by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

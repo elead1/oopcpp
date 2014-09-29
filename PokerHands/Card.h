@@ -90,9 +90,9 @@ class Card
 		 * @param rhs The 'right' Card to compare
 		 * @return true if lhs.rank is less than rhs.rank, false otherwise
 		 */
-		static bool sortByRank(const Card &lhs, const Card &rhs)
+		static bool ascendingSortByRank(const Card &lhs, const Card &rhs)
 		{
-			return lhs.myRank < rhs.myRank;
+			return lhs.getRank() < rhs.getRank();
 		}
 		/**
 		 * \fn reverseSortByRank( Card, Card )
@@ -101,9 +101,9 @@ class Card
 		 * @param rhs The 'right' Card to compare
 		 * @return true if lhs.rank is greater than rhs.rank, false otherwise
 		 */
-		static bool reverseSortByRank(const Card &lhs, const Card &rhs)
+		static bool descendingSortByRank(const Card &lhs, const Card &rhs)
 		{
-			return lhs.myRank > rhs.myRank;
+			return lhs.getRank() > rhs.getRank();
 		}
 
 	private:

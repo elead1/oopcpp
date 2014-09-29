@@ -21,11 +21,19 @@
 class Hand
 {
 	private:
+		enum HandTypes{STRAIGHTFLUSH, FOUROFAKIND, FULLHOUSE, FLUSH, STRAIGHT,
+				THREEOFAKIND, TWOPAIR, PAIR, HIGHCARD, HANDTYPECOUNT};
+		//Probability of each hand type.
+		static constexpr std::array<double, HandTypes::HANDTYPECOUNT> handProbTable = {{
+				0.001539, 0.0240, 0.144, 0.197, 0.392, 2.11, 4.75, 42.3, 50.1
+		}};
 		static const int MAXCARDS = 5;
+		static const int NUMRANKS = 13;
+		static const int NUMSUITS = 4;
 		int currentCards = 0; //Count of current number of cards in hand
 		std::array<Card, MAXCARDS> myCards = {};
 		double probability;
-		double calcProbability( void ) const;
+		double calcProbability( void );
 
 	public:
 		/**
@@ -75,10 +83,7 @@ class Hand
 		Card getNthHighCard( int height )
 		{
 			std::sort(std::begin(this->myCards), std::end(this->myCards),
-					Card::reverseSortByRank);
-			//std::cout << "height - 1: " << (height - 1) << std::endl;
-			//std::cout << "card from getNth: " << this->myCards.at(height - 1).toString() << std::endl;
-			//std::cout << "hand after sorting: " << this->toString() << std::endl;
+					Card::descendingSortByRank);
 			return this->myCards.at(height - 1);
 		}
 		/**
@@ -97,7 +102,16 @@ class Hand
 		 * 5 of hearts, and queen of clubs.
 		 */
 		std::string toString( void );
-
+		/**
+		 * \fn int handPerCardCompare( Hand, Hand )
+		 * Sorts each Hand descending, then does pairwise comparison of cards in each Hand.
+		 * Throws exception if lhs or rhs is not a full 5-Card Hand.
+		 * @param lhs The 'left' Hand to compare
+		 * @param rhs The 'right' Hand to compare
+		 * @return 1 if lhs has higher cumulative Rank than rhs, -1 if rhs is higher than lhs,
+		 * 0 if the Hands are equal
+		 */
+		static int handPerCardCompare( Hand &lhs, Hand &rhs );
 };
 
 #endif
