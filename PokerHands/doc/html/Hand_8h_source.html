@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('Hand_8h_source.html','');});
 <div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="classHand.html#a255314984b9f008626bc35fc5e1a6591">   83</a></span>&#160;        <a class="code" href="classCard.html">Card</a> <a class="code" href="classHand.html#a255314984b9f008626bc35fc5e1a6591">getNthHighCard</a>( <span class="keywordtype">int</span> height )</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        {</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            std::sort(std::begin(this-&gt;myCards), std::end(this-&gt;myCards),</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                    Card::descendingSortByRank);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                    <a class="code" href="classCard.html#abd3d6637fe7794c8cc689e2f93a80862">Card::descendingSortByRank</a>);</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordflow">return</span> this-&gt;myCards.at(height - 1);</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
 <div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="classHand.html#a3be4ecc3fc9f91ede85f190e62052945">   93</a></span>&#160;        <a class="code" href="classCard.html">Card</a> <a class="code" href="classHand.html#a3be4ecc3fc9f91ede85f190e62052945">getHighCard</a>( <span class="keywordtype">void</span> )</div>
@@ -119,24 +119,25 @@ $(document).ready(function(){initNavTree('Hand_8h_source.html','');});
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;};</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="classHand_html_a9d6ac8dfd1e4b6472f91726176e2c18c"><div class="ttname"><a href="classHand.html#a9d6ac8dfd1e4b6472f91726176e2c18c">Hand::toString</a></div><div class="ttdeci">std::string toString(void)</div><div class="ttdef"><b>Definition:</b> Hand.cpp:76</div></div>
-<div class="ttc" id="classHand_html_a3153b41aca0486be4a2256cd412bf584"><div class="ttname"><a href="classHand.html#a3153b41aca0486be4a2256cd412bf584">Hand::handPerCardCompare</a></div><div class="ttdeci">static int handPerCardCompare(Hand &amp;lhs, Hand &amp;rhs)</div><div class="ttdef"><b>Definition:</b> Hand.cpp:264</div></div>
+<div class="ttc" id="classHand_html_a9d6ac8dfd1e4b6472f91726176e2c18c"><div class="ttname"><a href="classHand.html#a9d6ac8dfd1e4b6472f91726176e2c18c">Hand::toString</a></div><div class="ttdeci">std::string toString(void)</div><div class="ttdef"><b>Definition:</b> Hand.cpp:75</div></div>
+<div class="ttc" id="classHand_html_a3153b41aca0486be4a2256cd412bf584"><div class="ttname"><a href="classHand.html#a3153b41aca0486be4a2256cd412bf584">Hand::handPerCardCompare</a></div><div class="ttdeci">static int handPerCardCompare(Hand &amp;lhs, Hand &amp;rhs)</div><div class="ttdef"><b>Definition:</b> Hand.cpp:263</div></div>
 <div class="ttc" id="classHand_html_a255314984b9f008626bc35fc5e1a6591"><div class="ttname"><a href="classHand.html#a255314984b9f008626bc35fc5e1a6591">Hand::getNthHighCard</a></div><div class="ttdeci">Card getNthHighCard(int height)</div><div class="ttdef"><b>Definition:</b> Hand.h:83</div></div>
-<div class="ttc" id="classHand_html_ac37407610e9506d1afd768e3d2c5a5a3"><div class="ttname"><a href="classHand.html#ac37407610e9506d1afd768e3d2c5a5a3">Hand::isFull</a></div><div class="ttdeci">bool isFull(void) const </div><div class="ttdef"><b>Definition:</b> Hand.cpp:53</div></div>
+<div class="ttc" id="classHand_html_ac37407610e9506d1afd768e3d2c5a5a3"><div class="ttname"><a href="classHand.html#ac37407610e9506d1afd768e3d2c5a5a3">Hand::isFull</a></div><div class="ttdeci">bool isFull(void) const </div><div class="ttdef"><b>Definition:</b> Hand.cpp:52</div></div>
 <div class="ttc" id="classHand_html"><div class="ttname"><a href="classHand.html">Hand</a></div><div class="ttdef"><b>Definition:</b> Hand.h:21</div></div>
-<div class="ttc" id="classHand_html_ae24ed6aeed4c7334949817b19c362e4a"><div class="ttname"><a href="classHand.html#ae24ed6aeed4c7334949817b19c362e4a">Hand::addCard</a></div><div class="ttdeci">void addCard(const Card &amp;c)</div><div class="ttdef"><b>Definition:</b> Hand.cpp:31</div></div>
+<div class="ttc" id="classHand_html_ae24ed6aeed4c7334949817b19c362e4a"><div class="ttname"><a href="classHand.html#ae24ed6aeed4c7334949817b19c362e4a">Hand::addCard</a></div><div class="ttdeci">void addCard(const Card &amp;c)</div><div class="ttdef"><b>Definition:</b> Hand.cpp:30</div></div>
 <div class="ttc" id="classHand_html_a3be4ecc3fc9f91ede85f190e62052945"><div class="ttname"><a href="classHand.html#a3be4ecc3fc9f91ede85f190e62052945">Hand::getHighCard</a></div><div class="ttdeci">Card getHighCard(void)</div><div class="ttdef"><b>Definition:</b> Hand.h:93</div></div>
+<div class="ttc" id="classCard_html_abd3d6637fe7794c8cc689e2f93a80862"><div class="ttname"><a href="classCard.html#abd3d6637fe7794c8cc689e2f93a80862">Card::descendingSortByRank</a></div><div class="ttdeci">static bool descendingSortByRank(const Card &amp;lhs, const Card &amp;rhs)</div><div class="ttdef"><b>Definition:</b> Card.h:104</div></div>
 <div class="ttc" id="classHand_html_a95a448d504ac091728aed1ee66af829f"><div class="ttname"><a href="classHand.html#a95a448d504ac091728aed1ee66af829f">Hand::Hand</a></div><div class="ttdeci">Hand(void)</div><div class="ttdef"><b>Definition:</b> Hand.h:44</div></div>
-<div class="ttc" id="classHand_html_ac5d138f474572569c70b79134db69b26"><div class="ttname"><a href="classHand.html#ac5d138f474572569c70b79134db69b26">Hand::rank</a></div><div class="ttdeci">double rank(void) const </div><div class="ttdef"><b>Definition:</b> Hand.cpp:71</div></div>
+<div class="ttc" id="classHand_html_ac5d138f474572569c70b79134db69b26"><div class="ttname"><a href="classHand.html#ac5d138f474572569c70b79134db69b26">Hand::rank</a></div><div class="ttdeci">double rank(void) const </div><div class="ttdef"><b>Definition:</b> Hand.cpp:70</div></div>
 <div class="ttc" id="classCard_html"><div class="ttname"><a href="classCard.html">Card</a></div><div class="ttdef"><b>Definition:</b> Card.h:17</div></div>
-<div class="ttc" id="classHand_html_ad610787652c7e26697e189b0ed923be3"><div class="ttname"><a href="classHand.html#ad610787652c7e26697e189b0ed923be3">Hand::clear</a></div><div class="ttdeci">void clear(void)</div><div class="ttdef"><b>Definition:</b> Hand.cpp:62</div></div>
+<div class="ttc" id="classHand_html_ad610787652c7e26697e189b0ed923be3"><div class="ttname"><a href="classHand.html#ad610787652c7e26697e189b0ed923be3">Hand::clear</a></div><div class="ttdeci">void clear(void)</div><div class="ttdef"><b>Definition:</b> Hand.cpp:61</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>Hand.h</b></li>
-    <li class="footer">Generated on Sun Sep 28 2014 22:39:52 for PokerHands by
+    <li class="footer">Generated on Sun Sep 28 2014 22:46:03 for PokerHands by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

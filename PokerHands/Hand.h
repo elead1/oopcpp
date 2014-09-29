@@ -44,7 +44,7 @@ class Hand
 		Hand( void )
 			: probability(0.0) {}
 		/**
-		 * \fn Hand( const std::array<Card, MAXCARDS> &cards )
+		 * \fn Hand( const std::array<Card, Hand::MAXCARDS> &cards )
 		 * Instantiates a new Hand containing the given Card objects.
 		 * Calculates the probability of the Hand right away. It is an
 		 * exception when cards does not have 5 elements.

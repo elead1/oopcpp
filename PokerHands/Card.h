@@ -84,7 +84,7 @@ class Card
 			}
 		}
 		/**
-		 * \fn sortByRank( Card, Card )
+		 * \fn ascendingSortByRank( Card, Card )
 		 * A sort function to sort Cards based on Rank.
 		 * @param lhs The 'left' Card to compare
 		 * @param rhs The 'right' Card to compare
@@ -95,7 +95,7 @@ class Card
 			return lhs.getRank() < rhs.getRank();
 		}
 		/**
-		 * \fn reverseSortByRank( Card, Card )
+		 * \fn descendingSortByRank( Card, Card )
 		 * Allows for sorting of Cards in descending order.
 		 * @param lhs The 'left' Card to compare
 		 * @param rhs The 'right' Card to compare

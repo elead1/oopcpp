@@ -9,7 +9,6 @@
 #include "Hand.h"
 
 const int Hand::MAXCARDS;
-const int Hand::NUMHANDOPTIONS;
 const int Hand::NUMRANKS;
 const int Hand::NUMSUITS;
 constexpr std::array<double, Hand::HandTypes::HANDTYPECOUNT> Hand::handProbTable;
