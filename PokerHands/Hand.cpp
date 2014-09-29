@@ -3,9 +3,9 @@
  * Author: Eric Leadbetter
  * Purpose: Holds cards making up a poker hand, determines ranking of hand.
  */
-// Include for testing.
+/* Include for testing.
 #include <iostream>
-
+*/
 #include "Hand.h"
 
 const int Hand::MAXCARDS;
@@ -282,7 +282,7 @@ int Hand::handPerCardCompare( Hand &lhs, Hand &rhs )
 	}
 	return 0; // Hands are equal.
 } //end handPerCardCompare()
-
+/*
 int main()
 {
 	std::array<Card, 5> cardArr;
@@ -360,4 +360,4 @@ int main()
 		}
 	}
 }
-
+*/
