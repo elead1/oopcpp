@@ -4,12 +4,6 @@
  * Purpose: Encapsulates the characteristics of a standard playing card.
  */
 
-/* Includes for testing.
-#include <iostream>
-#include <array>
-#include <algorithm>
-*/
-
 #include <sstream>
 #include "Card.h"
 
@@ -72,30 +66,3 @@ std::string Card::toString( void ) const
 
 	return cardRep;
 } // end toString()
-
-/*
-int main()
-{
-	Card c(Rank::ACE, Suit::SPADES);
-
-	std::array<Card, 3> cardArr = {};
-	cardArr.at(0) = c;
-	cardArr.at(1) = Card(c);
-	cardArr.at(2) = Card(Rank::QUEEN, Suit::HEARTS);
-
-	std::sort(std::begin(cardArr), std::end(cardArr), Card::reverseSortByRank);
-	std::cout << "Descending" << std::endl;
-	for(Card c : cardArr)
-	{
-		std::cout << c.toString() << std::endl;
-	}
-
-	std::sort(std::begin(cardArr), std::end(cardArr), Card::sortByRank);
-	std::cout << "Ascending" << std::endl;
-	for(Card c : cardArr)
-	{
-		std::cout << c.toString() << std::endl;
-	}
-	return 0;
-}*/
-

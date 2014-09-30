@@ -3,15 +3,14 @@
  * Author: Eric Leadbetter
  * Purpose: Holds cards making up a poker hand, determines ranking of hand.
  */
-/* Include for testing.
-#include <iostream>
-*/
+
 #include "Hand.h"
 
 const int Hand::MAXCARDS;
 const int Hand::NUMRANKS;
 const int Hand::NUMSUITS;
-constexpr std::array<double, Hand::HandTypes::HANDTYPECOUNT> Hand::handProbTable;
+constexpr std::array<double, Hand::HandTypes::HANDTYPECOUNT>
+Hand::handProbTable; //identifier here to avoid linewrap
 
 Hand::Hand( const std::array<Card, Hand::MAXCARDS> &cards )
 {
@@ -87,11 +86,14 @@ std::string Hand::toString( void )
 
 double Hand::calcProbability( void )
 {
-	 //number of Cards in Hand of each Rank; indexes are ascending (e.g. TWO is index 0)
+	 //number of Cards in Hand of each Rank
+	//indexes are ascending (e.g. TWO is index 0)
 	std::array<int, Hand::NUMRANKS> rankCounts = {};
-	//number of Cards in Hand of each Suit; indexes are 0 = CLUBS, 1 = DIAMONDS, 2 = HEARTS...
+	//number of Cards in Hand of each Suit
+	//indexes are 0 = CLUBS, 1 = DIAMONDS, 2 = HEARTS...
 	std::array<int, Hand::NUMSUITS> suitCounts = {};
-	//sort the array because sorted arrays are the best (also for determining straights)
+	//sort the array because sorted arrays are the best
+	//(also for determining straights)
 	std::sort(this->myCards.begin(), this->myCards.end(),
 				Card::descendingSortByRank);
 	//Start with high card probability (highest)
@@ -107,7 +109,8 @@ double Hand::calcProbability( void )
 	for(Card c : this->myCards)
 	{
 		//Compare Card ranks for all Cards after first Card in Hand.
-		//If this Card's rank isn't 1 less than previous Card's rank, no straight.
+		//If this Card's rank isn't 1 less than previous Card's rank,
+		//no straight.
 		if((lastCard.getRank() != Rank::INVALIDRANK) &&
 				(c.getRank() + 1 != lastCard.getRank()))
 		{
@@ -181,21 +184,28 @@ double Hand::calcProbability( void )
 
 	/* PURE RANK-BASED HAND RANKINGS*/
 
-	//Determine any four of a kind, full house, three of a kind, two pair, pairs
+	//Determine any four of a kind, full house, three of a kind,
+	//two pair, pairs
 	for(int count: rankCounts)
 	{
 		//Four of a kind
 		if(count == 4)
 		{
-			double fourOfAKindProb = Hand::handProbTable[Hand::HandTypes::FOUROFAKIND];
-			probability = (fourOfAKindProb < probability ? fourOfAKindProb : probability);
+			double fourOfAKindProb =
+					Hand::handProbTable[Hand::HandTypes::FOUROFAKIND];
+			probability = (fourOfAKindProb < probability
+					? fourOfAKindProb
+							: probability);
 		}
 		//Full house
 		if(count == 3 &&
 				pairFound)
 		{
-			double fullhouseProb = Hand::handProbTable[Hand::HandTypes::FULLHOUSE];
-			probability = (fullhouseProb < probability ? fullhouseProb : probability);
+			double fullhouseProb =
+					Hand::handProbTable[Hand::HandTypes::FULLHOUSE];
+			probability = (fullhouseProb < probability
+					? fullhouseProb
+							: probability);
 		}
 		//Three of a kind
 		else if(count == 3 &&
@@ -207,8 +217,11 @@ double Hand::calcProbability( void )
 		if(count == 2 &&
 				pairFound)
 		{
-			double twoPairProb = Hand::handProbTable[Hand::HandTypes::TWOPAIR];
-			probability = (twoPairProb < probability ? twoPairProb : probability);
+			double twoPairProb =
+					Hand::handProbTable[Hand::HandTypes::TWOPAIR];
+			probability = (twoPairProb < probability
+					? twoPairProb
+							: probability);
 		}
 		//one pair
 		else if(count == 2 &&
@@ -221,14 +234,20 @@ double Hand::calcProbability( void )
 	//check for three of a kind
 	if(threeOfKindFound)
 	{
-		double threeofKindProb = Hand::handProbTable[Hand::HandTypes::THREEOFAKIND];
-		probability = (threeofKindProb < probability ? threeofKindProb : probability);
+		double threeofKindProb =
+				Hand::handProbTable[Hand::HandTypes::THREEOFAKIND];
+		probability = (threeofKindProb < probability
+				? threeofKindProb
+						: probability);
 	}
 	//check pair
 	if(pairFound)
 	{
-		double pairProb = Hand::handProbTable[Hand::HandTypes::PAIR];
-		probability = (pairProb < probability ? pairProb : probability);
+		double pairProb =
+				Hand::handProbTable[Hand::HandTypes::PAIR];
+		probability = (pairProb < probability
+				? pairProb
+						: probability);
 	}
 
 	/*PURE SUIT-BASED RANKINGS*/
@@ -237,8 +256,11 @@ double Hand::calcProbability( void )
 	{
 		if(count == Hand::MAXCARDS)
 		{
-			double flushProb = Hand::handProbTable[Hand::HandTypes::FLUSH];
-			probability = (flushProb < probability ? flushProb : probability);
+			double flushProb =
+					Hand::handProbTable[Hand::HandTypes::FLUSH];
+			probability = (flushProb < probability
+					? flushProb
+							: probability);
 			flushFound = true;
 		}
 	} // end for
@@ -247,15 +269,21 @@ double Hand::calcProbability( void )
 	if(flushFound &&
 			straightFound)
 	{
-		double straightFlushProb = Hand::handProbTable[Hand::HandTypes::STRAIGHTFLUSH];
-		probability = (straightFlushProb < probability ? straightFlushProb : probability);
+		double straightFlushProb =
+				Hand::handProbTable[Hand::HandTypes::STRAIGHTFLUSH];
+		probability = (straightFlushProb < probability
+				? straightFlushProb
+						: probability);
 	}
 	//Check for plain straight
 	else if(straightFound &&
 		!flushFound)
 	{
-		double straightProb = Hand::handProbTable[Hand::HandTypes::STRAIGHT];
-		probability = (straightProb < probability ? straightProb : probability);
+		double straightProb =
+				Hand::handProbTable[Hand::HandTypes::STRAIGHT];
+		probability = (straightProb < probability
+				? straightProb
+						: probability);
 	}
 	return probability;
 } // end calcProbability()
@@ -267,8 +295,10 @@ int Hand::handPerCardCompare( Hand &lhs, Hand &rhs )
 	{
 		throw std::invalid_argument("lhs or rhs is not a full 5-Card Hand.");
 	}
-	std::sort(lhs.myCards.begin(), lhs.myCards.end(), Card::ascendingSortByRank);
-	std::sort(rhs.myCards.begin(), rhs.myCards.end(), Card::ascendingSortByRank);
+	std::sort(lhs.myCards.begin(), lhs.myCards.end(),
+			Card::ascendingSortByRank);
+	std::sort(rhs.myCards.begin(), rhs.myCards.end(),
+			Card::ascendingSortByRank);
 	for(int i = 0; i < Hand::MAXCARDS; i++)
 	{
 		if(lhs.myCards[i].getRank() < rhs.myCards[i].getRank())
@@ -282,82 +312,3 @@ int Hand::handPerCardCompare( Hand &lhs, Hand &rhs )
 	}
 	return 0; // Hands are equal.
 } //end handPerCardCompare()
-/*
-int main()
-{
-	std::array<Card, 5> cardArr;
-	//Test printing empty hand.
-	Hand h;
-	std::cout << h.toString() << std::endl;
-
-	std::array<Card, 5> cardArr2 = {Card(Rank::ACE, Suit::CLUBS),
-			Card(Rank::EIGHT, Suit::DIAMONDS),
-			Card(Rank::JACK, Suit::HEARTS),
-			Card(Rank::TWO, Suit::CLUBS),
-			Card(Rank::QUEEN, Suit::SPADES)
-	};
-	//Test making hand from card array.
-	Hand h2(cardArr2);
-	std::cout << h2.toString() << std::endl;
-
-	//Test isFull
-	std::cout << "h2 isFull: " << h2.isFull() << std::endl;
-	std::cout << "h1 isFull: " << h.isFull() << std::endl;
-
-	//Test clear
-	h2.clear();
-	std::cout << "h2 isFull after clear: " << h2.isFull() << std::endl;
-
-	//Test addCard & getHighCard (and getNthHighCard)
-	h.addCard(Card(Rank::KING, Suit::HEARTS));
-	std::cout << "h after addCard: " << h.toString() << std::endl;
-	std::cout << "h highest card after addCard: "
-			<< h.getHighCard().toString() << std::endl;
-
-	//Test hand comparison
-	std::array<Card, 5> hand1Deck = {Card(Rank::ACE, Suit::CLUBS),
-			Card(Rank::THREE, Suit::CLUBS),
-			Card(Rank::NINE, Suit::CLUBS),
-			Card(Rank::TEN, Suit::CLUBS),
-			Card(Rank::SEVEN, Suit::CLUBS)};
-	Hand hand1(hand1Deck);
-	std::array<Card, 5> hand2Deck = {Card(Rank::ACE, Suit::SPADES),
-			Card(Rank::TWO, Suit::SPADES),
-			Card(Rank::SIX, Suit::SPADES),
-			Card(Rank::FOUR, Suit::SPADES),
-			Card(Rank::EIGHT, Suit::SPADES)};
-	Hand hand2(hand2Deck);
-
-	std::cout << "Probability of hand 1 (" << hand1.toString() << "): "
-			<< hand1.rank() << std::endl;
-	std::cout << "Probability of hand 2 (" << hand2.toString() << "): "
-			<< hand2.rank() << std::endl;
-	if(hand1.rank() < hand2.rank())
-	{
-		std::cout << "Winning hand is hand 1." << std::endl;
-	}
-	else if(hand1.rank() > hand2.rank())
-	{
-		std::cout << "Winning hand is hand 2." << std::endl;
-	}
-	//Ranks are equal, compare individual cards
-	else
-	{
-		std::cout << "Ranks equal, comparing individual cards." << std::endl;
-		switch(Hand::handPerCardCompare(hand1, hand2))
-		{
-			case -1:
-				std::cout << "Hand 2 winner!" << std::endl;
-				break;
-			case 1:
-				std::cout << "Hand 1 winner!" << std::endl;
-				break;
-			case 0:
-				std::cout << "Tie!" << std::endl;
-				break;
-			default:
-				break;
-		}
-	}
-}
-*/
