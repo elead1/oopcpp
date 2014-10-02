@@ -20,23 +20,9 @@
 
 class Hand
 {
-	private:
-		enum HandTypes{STRAIGHTFLUSH, FOUROFAKIND, FULLHOUSE, FLUSH, STRAIGHT,
-				THREEOFAKIND, TWOPAIR, PAIR, HIGHCARD, HANDTYPECOUNT};
-		//Probability of each hand type.
-		static constexpr std::array<double, HandTypes::HANDTYPECOUNT>
-		handProbTable = {{ // had to move identifier here to avoid linewrap
-				0.001539, 0.0240, 0.144, 0.197, 0.392, 2.11, 4.75, 42.3, 50.1
-		}};
-		static const int MAXCARDS = 5;
-		static const int NUMRANKS = 13;
-		static const int NUMSUITS = 4;
-		int currentCards = 0; //Count of current number of cards in hand
-		std::array<Card, MAXCARDS> myCards = {};
-		double probability;
-		double calcProbability( void );
 
 	public:
+		static const int MAXCARDS = 5;
 		/**
 		 * \fn Hand( void )
 		 * Default Hand constructor. Initializes with empty Card array. Useful
@@ -115,6 +101,21 @@ class Hand
 		 * 0 if the Hands are equal
 		 */
 		static int handPerCardCompare( Hand &lhs, Hand &rhs );
+
+	private:
+		enum HandTypes{STRAIGHTFLUSH, FOUROFAKIND, FULLHOUSE, FLUSH, STRAIGHT,
+				THREEOFAKIND, TWOPAIR, PAIR, HIGHCARD, HANDTYPECOUNT};
+		//Probability of each hand type.
+		static constexpr std::array<double, HandTypes::HANDTYPECOUNT>
+		handProbTable = {{ // had to move identifier here to avoid linewrap
+				0.001539, 0.0240, 0.144, 0.197, 0.392, 2.11, 4.75, 42.3, 50.1
+		}};
+		static const int NUMRANKS = 13;
+		static const int NUMSUITS = 4;
+		int currentCards = 0; //Count of current number of cards in hand
+		std::array<Card, MAXCARDS> myCards = {};
+		double probability;
+		double calcProbability( void );
 };
 
 #endif
