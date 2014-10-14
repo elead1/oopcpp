@@ -8,8 +8,8 @@
 
 int main()
 {
-	Probability p = 0.0;
-	Probability q = 1.0;
+	Probability p = 0.2;
+	Probability q = 0.1;
 
 	std::cout << "p = " << p.getValue() << std::endl;
 	std::cout << "q = " << q.getValue() << std::endl;
@@ -20,7 +20,9 @@ int main()
 
 	std::cout << "p Or q: " << (p | q).getValue() << std::endl;
 
-	std::cout << "p xor q: " << (p ^ q).getValue() << std::endl;
+	std::cout << "p xor q: " << (p ^ q).getValue() << std::endl; // should be 0.74
 	std::cout << "not p xor q: " << ((~p) ^ q).getValue() << std::endl;
+
+	std::cout << "p and not q: " <<  (p - q).getValue() << std::endl;
 }
 

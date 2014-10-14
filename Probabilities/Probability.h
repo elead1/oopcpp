@@ -126,13 +126,9 @@ class Probability
 		Probability &operator^( const Probability &probability ) const
 		{
 			Probability temp;
-			std::cout << this->getValue() << std::endl;
-			std::cout << probability.getValue() << std::endl;
-			Probability temp2 = (*this & probability);
-			std::cout << temp2.getValue() << std::endl;
-			std::cout << 2 * temp2.getValue() << std::endl;
 			temp = (this->val + probability.getValue()
 					- (2 * (*this & probability).getValue()));
+			//temp = Probability((1 - this->val) * probability.getValue()) | Probability(this->val * (1 - probability.getValue()));
 			return temp;
 		} // end operator^( Probability )
 
