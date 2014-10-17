@@ -1,6 +1,8 @@
 /*
  * Probability.h
  * Author: Eric Leadbetter
+ * Class: 605.404 OOP with C++, Hal Pierson and Doug Ferguson
+ * Module #6: Probability
  * Purpose: This class represents a probability and provides the necessary
  * operators to perform probability-related math.
  */
@@ -9,8 +11,13 @@
 #include <iostream>
 #include <stdexcept>
 
+/** \file Probability.h
+ * \brief Defines the Probability class and overloaded operators
+ * for use with it.
+ */
+
 /**
- * \class Probability
+ * \brief Probability
  * Specifies operations to perform mathematical operations on probabilities.
  */
 class Probability
@@ -48,7 +55,7 @@ class Probability
 		} // end Probability( double )
 
 		/**
-		 * \fn Probability &operator=( const Probability &probability ) const
+		 * \fn Probability &operator=( const Probability &probability )
 		 * Allows creation of a new Probability from an existing probability
 		 * using assignment.
 		 * @param probability The probability to copy.
@@ -77,18 +84,6 @@ class Probability
 			return *this;
 		} // end operator=( double )
 
-		/**
-		 * \fn Probability &operator&( const Probability &probability ) const
-		 * @param probability The probability to and with this one
-		 * @return The probability of the event represented by this
-		 * probability and the event represented by the parameter occurring.
-		 */
-		Probability &operator&( const Probability &probability ) const
-		{
-			Probability temp;
-			temp = this->val * probability.getValue();
-			return temp;
-		} // end operator&( Probability)
 
 		/**
 		 * \fn Probability &operator~( void ) const
@@ -97,54 +92,10 @@ class Probability
 		 */
 		Probability &operator~( void ) const
 		{
-			Probability temp;
-			temp = 1.0 - this->val;
-			return temp;
+			Probability *temp = new Probability;
+			*temp = 1.0 - this->val;
+			return *temp;
 		} // end operator~()
-
-		/**
-		 * \fn Probability &operator|( const Probability &probability ) const
-		 * @param probability The probability to or with this one
-		 * @return The probability of the event represented by this
-		 * probability or the event represented by the parameter occurring.
-		 */
-		Probability &operator|( const Probability &probability ) const
-		{
-			Probability temp;
-			temp = this->val + probability.getValue()
-					- (*this & probability).getValue();
-			return temp;
-		} // end operator|( Probability )
-
-		/**
-		 * \fn Probability &operator^( const Probability &probability ) const
-		 * @param probability The probability to exclusive-or with this one
-		 * @return The probability of the event represented by this
-		 * probability or the event represented by the parameter occurring,
-		 * but not both.
-		 */
-		Probability &operator^( const Probability &probability ) const
-		{
-			Probability temp;
-			temp = (this->val + probability.getValue()
-					- (2 * (*this & probability).getValue()));
-			//temp = Probability((1 - this->val) * probability.getValue()) | Probability(this->val * (1 - probability.getValue()));
-			return temp;
-		} // end operator^( Probability )
-
-		/**
-		 * \fn Probability &operator-( const Probability &probability ) const
-		 * @param probability The probability to calculate exclusivity from
-		 * @return The probability of the event represented by this
-		 * probability occurring but not the event represented by the
-		 * parameter.
-		 */
-		Probability &operator-( const Probability &probability ) const
-		{
-			Probability temp;
-			temp = this->getValue() - (*this & probability).getValue();
-			return temp;
-		} // end operator-( Probability )
 
 		/**
 		 * \fn double getValue( void )
@@ -158,5 +109,83 @@ class Probability
 		double val;
 };
 
-#endif
+/**
+ * \fn std::ostream &operator<<( std::ostream &out,
+ * 		const Probability &probability)
+ * Enables Probabilities to be streamed to output.
+ * @param out the ostream to stream probability to
+ * @param probability the Probability whose value will be streamed to out
+ * @return out in order to chain operations.
+ */
+std::ostream &operator<<( std::ostream &out, const Probability &probability)
+{
+	out << probability.getValue();
+	return out;
+}
 
+/**
+ * \fn Probability &operator&( const Probability &prob1,
+ * 		const Probability &prob2 )
+ * @param prob1 The first probability to and
+ * @param prob2 The second probability to and with the first one
+ * @return The probability of the event represented by prob1 and
+ * the event represented by prob2 occurring.
+ */
+Probability &operator&( const Probability &prob1,
+		const Probability &prob2 )
+{
+	Probability *temp = new Probability;
+	*temp = prob1.getValue() * prob2.getValue();
+	return *temp;
+} // end operator&( Probability, Probability )
+
+/**
+ * \fn Probability &operator|( const Probability &prob1,
+ * 		const Probability &prob2 )
+ * @param prob1 The first probability to or
+ * @param prob2 The second probability to or with the first one
+ * @return The probability of the event represented by prob1
+ * or the event represented by prob2 occurring.
+ */
+Probability &operator|( const Probability &prob1,
+		const Probability &prob2 )
+{
+	Probability *temp = new Probability;
+	*temp = prob1.getValue() + prob2.getValue()
+			- (prob1 & prob2).getValue();
+	return *temp;
+} // end operator|( Probability )
+
+/**
+ * \fn Probability &operator^( const Probability &prob1,
+ * 		const Probability &prob2 )
+ * @param prob1 The first probability to be xor-ed
+ * @param prob2 The probability to be xor-ed with the first one
+ * @return The probability of the event represented by prob1
+ * or the event represented by prob2 occurring, but not both.
+ */
+Probability &operator^( const Probability &prob1,
+		const Probability &prob2 )
+{
+	Probability *temp = new Probability;
+	*temp = (prob1.getValue() + prob2.getValue()
+			- (2 * (prob1 & prob2).getValue()));
+	return *temp;
+} // end operator^( Probability )
+
+/**
+ * \fn Probability &operator-( const Probability &prob1,
+ * 		const Probability &prob2 )
+ * @param prob1 The probability of the event that does occur
+ * @param prob2 The probability of the event that does not occur
+ * @return The probability of the event represented by prob1 occurring
+ *  but not the event represented by prob2.
+ */
+Probability &operator-( const Probability &prob1,
+		const Probability &prob2 )
+{
+	Probability *temp = new Probability;
+	*temp = prob1 & ~prob2;
+	return *temp;
+} // end operator-( Probability )
+#endif
