@@ -8,7 +8,6 @@
  */
 #ifndef Probability_H
 #define Probability_H
-#include <iostream>
 #include <stdexcept>
 
 /** \file Probability.h
