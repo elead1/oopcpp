@@ -21,6 +21,12 @@ class OperandNode : public Node
 	public:
 		virtual ~OperandNode() { }; // dummy destructor
 		/**
+		 * \fn virtual double Evaluate() const override;
+		 * The evaluation of an operand node is just the value of that node.
+		 * @return getValue()
+		 */
+		virtual double Evaluate() const override;
+		/**
 		 * \fn virtual double getValue( void ) const = 0;
 		 * @return The double value of the node
 		 */

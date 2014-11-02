@@ -15,6 +15,7 @@ class Node
 {
 	public:
 		virtual ~Node() { };
+		virtual double Evaluate() const = 0;
 		virtual void print(std::ostream& out) const = 0;
 };
 
@@ -23,5 +24,6 @@ inline std::ostream &operator<<(std::ostream& out, const Node& n)
 	n.print(out);
 	return out;
 }
+
 
 #endif

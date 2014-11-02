@@ -6,6 +6,16 @@
 
 #include "OperandNode.h"
 
+
+/**
+ * \fn virtual double Evaluate() const override;
+ * The evaluation of an operand node is just the value of that node.
+ * @return getValue()
+ */
+double OperandNode::Evaluate() const
+{
+	return this->getValue();
+} // end Evaluate
 /**
  * \fn virtual double operator+( const OperandNode &otherNode ) const
  * Provides for addition between leaf nodes in an expression tree

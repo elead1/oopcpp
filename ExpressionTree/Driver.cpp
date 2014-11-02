@@ -5,8 +5,7 @@
  */
 
 #include <iostream>
-#include "Variable.h"
-#include "Constant.h"
+#include "ExpressionTree.h"
 
 int main()
 {
@@ -18,25 +17,22 @@ int main()
 	std::cout << y << "=" << y.getValue() << std::endl;
 	Constant a(0.5);
 	std::cout << "a=" << a << std::endl;
-	std::cout << "X*Y: " << x * y << std::endl;
-	std::cout << "X+Y: " << x + y << std::endl;
-	std::cout << "X-Y: " << x - y << std::endl;
-	std::cout << "X/Y: " << x / y << std::endl;
-	std::cout << "X%Y: " << x % y << std::endl;
-	std::cout << "X^Y: " << (x ^ y) << std::endl;
 
-	std::cout << "X*0.5: " << x * a << std::endl;
-	std::cout << "X+0.5: " << x + a << std::endl;
-	std::cout << "X-0.5: " << x - a << std::endl;
+	Tree tree = new Mul(new Add(new Sub(new Constant(-5), &x), &a), &y);
+	Tree tree2 = new Pow(new Constant(-3.0), new Constant(3.0));
+	Tree tree3 = new Mod(new Constant(5.0), new Constant(3.0));
+	Tree tree4 = new Neg(new Constant(10.0));
 	try
 	{
-		std::cout << "X/0.5: " << x / a << std::endl;
-		std::cout << "X%0.5: " << x % a << std::endl;
+		std::cout << tree->Evaluate() << std::endl;
 	}
 	catch(std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	std::cout << "X^0.5: " << (x ^ a) << std::endl;
+	std::cout << *tree << std::endl;
+	std::cout << *tree2 << " = " << tree2->Evaluate() << std::endl;
+	std::cout << *tree3 << " = " << tree3->Evaluate() << std::endl;
+	std::cout << *tree4 << " = " << tree4->Evaluate() << std::endl;
 	return 0;
 }
