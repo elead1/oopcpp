@@ -1,7 +1,7 @@
 /*
  * Add.h
- * Author: eric
- * Purpose: 
+ * Author: Eric Leadbetter
+ * Purpose: Define the Evaluate and print operations for an Add operator.
  */
 
 #ifndef Add_H
@@ -26,10 +26,6 @@ class Add : public OperatorNode
 			out << "( " << *(this->leftChild) << " + "
 						<< *(this->rightChild) << " )";
 		}
-
-	private:
-		Node *leftChild;
-		Node *rightChild;
 };
 
 #endif

@@ -1,7 +1,8 @@
 /*
- * Tree.h
+ * ExpressionTree.h
  * Author: eric
- * Purpose: 
+ * Purpose: Tie all required, but separate, headers together
+ * for easier import.
  */
 
 #ifndef Tree_H

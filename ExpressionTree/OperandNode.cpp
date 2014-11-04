@@ -1,7 +1,8 @@
 /*
  * OperandNode.cpp
  * Author: Eric Leadbetter
- * Purpose: 
+ * Purpose: An abstract ancestor for the value classes to be provided
+ * to a mathematical operator.
  */
 
 #include "OperandNode.h"

@@ -1,7 +1,8 @@
 /*
  * Variable.cpp
  * Author: Eric Leadbetter
- * Purpose: 
+ * Purpose: Represents a variable value in an expression tree. Contains
+ * a static symbol table to store variable values.
  */
 
 #include "Variable.h"

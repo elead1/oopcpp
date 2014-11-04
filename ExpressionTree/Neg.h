@@ -1,7 +1,8 @@
 /*
  * Neg.h
- * Author: eric
- * Purpose: 
+ * Author: Eric Leadbetter
+ * Purpose: Define the Evaluate and print operations for a Negation
+ * operator.
  */
 
 #ifndef Neg_H
@@ -13,8 +14,14 @@
 class Neg : public OperatorNode
 {
 	public:
+		/**
+		 * \fn Neg(Node *rightChild)
+		 * Neg is a unary operation that multiplies the parameter by -1.
+		 * @param rightChild the expression to negate.
+		 */
 		Neg(Node *rightChild)
 		{
+			// For negation, left child is always -1.
 			this->leftChild = new Constant(-1.0);
 			this->rightChild = rightChild;
 		}
@@ -27,9 +34,6 @@ class Neg : public OperatorNode
 			out << "( -" << *(this->rightChild) << " )";
 		}
 
-	private:
-		Node *leftChild;
-		Node *rightChild;
 };
 
 #endif

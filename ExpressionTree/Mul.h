@@ -1,7 +1,8 @@
 /*
  * Mul.h
- * Author: eric
- * Purpose: 
+ * Author: Eric Leadbetter
+ * Purpose: Define the Evaluate and print operations for a Multiplication
+ * operator.
  */
 
 #ifndef Mul_H
@@ -26,10 +27,6 @@ class Mul : public OperatorNode
 			out << "( " << *(this->leftChild) << " * "
 						<< *(this->rightChild) << " )";
 		}
-
-	private:
-		Node *leftChild;
-		Node *rightChild;
 };
 
 #endif

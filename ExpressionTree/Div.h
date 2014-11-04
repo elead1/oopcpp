@@ -1,7 +1,8 @@
 /*
  * Div.h
- * Author: eric
- * Purpose: 
+ * Author: Eric Leadbetter
+ * Purpose: Define the Evaluate and print operations for a Division
+ * operator.
  */
 
 #ifndef Div_H
@@ -17,8 +18,14 @@ class Div : public OperatorNode
 			this->leftChild = leftChild;
 			this->rightChild = rightChild;
 		}
+		/**
+		 * virtual double Evaluate() const override final
+		 * @return The value of leftChild divided by rightChild.
+		 * Throws exception if division by 0 would occur.
+		 */
 		virtual double Evaluate() const override final
 		{	double rvalue = this->rightChild->Evaluate();
+			//Avoid division by 0.
 			if(rvalue == 0.0)
 			{
 				throw std::invalid_argument("Error evaluating division: "
@@ -31,10 +38,6 @@ class Div : public OperatorNode
 			out << "( " << *(this->leftChild) << " / "
 						<< *(this->rightChild) << " )";
 		}
-
-	private:
-		Node *leftChild;
-		Node *rightChild;
 };
 
 #endif

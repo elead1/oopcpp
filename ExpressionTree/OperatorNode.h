@@ -1,7 +1,7 @@
 /*
  * OperatorNode.h
  * Author: Eric Leadbetter
- * Purpose: 
+ * Purpose: Encapsulate the concept of a generic "operator".
  */
 
 #ifndef OperatorNode_H
@@ -15,6 +15,9 @@ class OperatorNode : public Node
 		virtual ~OperatorNode() { } //dummy destructor
 		virtual double Evaluate() const = 0;
 		virtual void print(std::ostream &out) const = 0;
+	protected:
+		Node* leftChild;
+		Node* rightChild;
 };
 
 #endif

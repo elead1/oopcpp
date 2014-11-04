@@ -1,7 +1,8 @@
 /*
  * Sub.h
- * Author: eric
- * Purpose: 
+ * Author: Eric Leadbetter
+ * Purpose: Define the Evaluate and print operations for a Subtraction
+ * operator.
  */
 
 #ifndef Sub_H
@@ -26,10 +27,6 @@ class Sub : public OperatorNode
 			out << "( " << *(this->leftChild) << " - "
 									<< *(this->rightChild) << " )";
 		}
-
-	private:
-		Node *leftChild;
-		Node *rightChild;
 };
 
 #endif
