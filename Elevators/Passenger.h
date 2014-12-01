@@ -12,10 +12,11 @@ class Passenger
 {
 	public:
 		Passenger()
-			: Passenger(100)
+			: Passenger(1, 100)
 		{}
-		Passenger(int endFloor)
+		Passenger(int queueTime, int endFloor)
 		{
+			this->queueTime = queueTime;
 			this->endFloor = endFloor;
 			this->waitingTime = 0;
 			this->ridingTime = 0;
@@ -23,26 +24,35 @@ class Passenger
 		}
 		virtual ~Passenger() {}
 		void increaseTimer();
-		const inline int getWaitingTime()
+		inline int getWaitingTime() const
 		{
 			return this->waitingTime;
 		}
-		const inline int getRidingTime()
+		inline int getRidingTime() const
 		{
 			return this->ridingTime;
+		}
+		inline int getQueueTime() const
+		{
+			return this->queueTime;
 		}
 		inline void setRiding()
 		{
 			this->state = RIDING;
 		}
-		const inline PassengerState getState()
+		inline PassengerState getState() const
 		{
 			return this->state;
+		}
+		inline int getEndFloor() const
+		{
+			return this->endFloor;
 		}
 	private:
 		int endFloor;
 		int ridingTime;
 		int waitingTime;
+		int queueTime;
 		PassengerState state;
 };
 

@@ -6,7 +6,7 @@
 #ifndef Floor_H
 #define Floor_H
 
-#include <queue>
+#include <deque>
 #include "Passenger.h"
 #include "Elevator.h"
 
@@ -21,14 +21,20 @@ class Floor
 	  {}
 		virtual ~Floor() {};
 		void queuePassenger(const Passenger &passenger);
-		void loadPassenger(Elevator &elevator);
-		const inline int getFloorNum()
+		void loadPassengers(Elevator &elevator);
+		void updatePassengers();
+		bool hasPassengersWithLoadTime(int time) ;
+		inline int getFloorNum() const
 		{
 			return this->floorNum;
 		}
+		inline int getPassengerCount() const
+		{
+			return this->passengerLine.size();
+		}
 	private:
 		int floorNum;
-		std::queue<Passenger> passengerLine;
+		std::deque<Passenger> passengerLine;
 };
 
 #endif
