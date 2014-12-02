@@ -1,7 +1,7 @@
 /*
- * DataPoint.cpp
- * Author: eric
- * Purpose: 
+ * DataPoint.h
+ * Author: Eric Leadbetter
+ * Purpose: Encapsulates all data fields for a financial datapoint.
  */
 #include <iostream>
 #include "DataPoint.h"
@@ -35,7 +35,12 @@ int DataPoint::timestampToUnixTime(const char* timestamp)
 
 	return ptime;
 }
-
+/**
+ * \fn static std::string unixTimeToTimeStamp(int)
+ * Converts a UNIX Epoch timestamp to a human readable string.
+ * @param unixtime UNIX Epoch time.
+ * @return a date string in DD-Mon-YY format.
+ */
 std::string DataPoint::unixTimeToTimeStamp(int unixtime)
 {
 	time_t t = (time_t)unixtime;

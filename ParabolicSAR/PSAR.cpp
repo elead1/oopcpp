@@ -1,7 +1,8 @@
 /*
- * PSAR.cpp
+ * PSAR.h
  * Author: Eric Leadbetter
- * Purpose: 
+ * Purpose: Encapsulates financial data and allows for calculation of
+ * PSAR values for each datapoint.
  */
 
 #include "PSAR.h"
@@ -10,6 +11,16 @@ double PSAR::baseAccel = 0.02;
 double PSAR::maxAccel = 0.2;
 double PSAR::accelIncr = 0.02;
 
+/**
+ * \fn PSAR(const char*, bool)
+ * Initializes a PSAR calculator using the data in the file
+ * referred to by the given filename. If ascending is false, it is
+ * assumed that the data is listed in the file with the newest data
+ * first.
+ * @param filename
+ * @param ascending
+ * @throws Exception if the given filename is unable to be opened.
+ */
 PSAR::PSAR(const char *filename, bool ascending)
 {
 	std::ifstream file(filename);
@@ -76,7 +87,12 @@ PSAR::PSAR(const char *filename, bool ascending)
 				std::min(this->data[0].getLowVal(), this->data[1].getLowVal());
 	}
 }
-
+/**
+ * \fn void calculatePSARs(void)
+ * Calculates the PSAR values for the data stored in this. PSARs
+ * are keyed using the UNIX timestamp equivalent to the date of the
+ * financial datapoint.
+ */
 void PSAR::calculatePSARs()
 {
 	std::deque<DataPoint>::iterator it = this->data.begin();
@@ -144,13 +160,25 @@ void PSAR::calculatePSARs()
 				std::pair<int, double>(it->getTimeStamp(), this->lastPSAR));
 	} // end calculation loop
 }
-
+/**
+ * \fn double getPSARAt(int)
+ * Returns the PSAR value calculated for the date closest to the given
+ * timestamp.
+ * @param unixtimestamp
+ * @return The PSAR value
+ */
 double PSAR::getPSARAt(int unixtime)
 {
-	double psar = this->psarMap[unixtime];
+	int closestTime = this->closestKeyTo(unixtime);
+	double psar = this->psarMap[closestTime];
 	return psar;
 }
-
+/**
+ * \fn std::vector<std::pair<int, double>>getPSARSeries() const
+ * Returns a container of all timestamp-PSAR pairs with the lvalue =
+ * timestamp.
+ * @return A vector of timestamp-PSAR pairs.
+ */
 std::vector<std::pair<int, double> >PSAR::getPSARSeries() const
 {
 	std::vector<std::pair<int, double> > psarVals(this->psarMap.size());
@@ -163,17 +191,36 @@ std::vector<std::pair<int, double> >PSAR::getPSARSeries() const
 	}
 	return psarVals;
 }
-
-std::vector<std::pair<int, double> >PSAR::getPSARSeriesFrom(int unixtime)
+/**
+ * \fn std::vector<std::pair<int, double>>getPSARSeriesUntil(int unixtimestamp)
+ * Returns a container of all timestamp-PSAR pairs up until the given
+ * UNIX timestamp.
+ * @param unixtimestamp
+ * @return A vector of timestamp-PSAR pairs.
+ */
+std::vector<std::pair<int, double> >PSAR::getPSARSeriesUntil(int unixtime)
 {
 	std::vector<std::pair<int, double> > psarVals;
-	std::map<int, double>::iterator it = this->psarMap.find(unixtime);
+	std::map<int, double>::iterator beg_it = this->psarMap.begin();
+	std::map<int, double>::iterator end_it = this->psarMap.find(unixtime);
 
-	for(; it != this->psarMap.end(); ++it)
+	for(;	beg_it != end_it; ++beg_it)
 	{
-		psarVals.push_back(*it);
+		psarVals.push_back(*beg_it);
 	}
 	return psarVals;
+}
+/**
+ * \fn std::vector<std::pair<int, double>>getPSARSeriesUntil(const char* tstamp)
+ * Returns a container of all timestamp-PSAR pairs up until the given
+ * timestamp.
+ * @param tstamp a date given in DD-Mon-YY format.
+ * @return A vector of timestamp-PSAR pairs.
+ */
+std::vector<std::pair<int, double> >PSAR::getPSARSeriesUntil(const char* tstamp)
+{
+	int t = this->closestKeyTo(DataPoint::timestampToUnixTime(tstamp));
+	return this->getPSARSeriesUntil(t);
 }
 
 /**
@@ -210,14 +257,39 @@ bool PSAR::updateTrending(DataPoint currentPoint, DataPoint previousPoint)
 	return trendChanged;
 }
 
+/**
+ * \fn int closestKeyTo(int)
+ * Determines the key with the value closest to but less than the parameter.
+ * @param unixtime the UNIX timestamp to find a key less than
+ * @return the existing key value just less than the parameter
+ */
+int PSAR::closestKeyTo(int unixtime)
+{
+	int closestTime = -1;
+	std::map<int, double>::iterator beg_it = this->psarMap.begin();
+
+	for(; beg_it != this->psarMap.end(); ++beg_it)
+	{
+		if(beg_it->first <= unixtime)
+		{
+			closestTime = beg_it->first;
+		}
+		else
+		{
+			break;
+		}
+	}
+	return closestTime;
+}
+/*
 int main()
 {
-	std::string fname("testfile.csv");
+	std::string fname("/home/eric/workspace/oopcpp/ParabolicSAR/data/asps.csv");
 	try{
 		PSAR testPSAR(fname.c_str(), false);
 
 		testPSAR.calculatePSARs();
-		std::vector<std::pair<int, double> >myPSARS = testPSAR.getPSARSeries();
+		std::vector<std::pair<int, double> >myPSARS = testPSAR.getPSARSeriesUntil("1-Jun-13");
 		//std::cout << testPSAR.getPSARAt(DataPoint::timestampToUnixTime("20-Nov-14"));
 		for(std::pair<int, double> d : myPSARS)
 		{
@@ -232,4 +304,4 @@ int main()
 	}
 	return 0;
 }
-
+*/
